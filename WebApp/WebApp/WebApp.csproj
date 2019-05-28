@@ -269,19 +269,44 @@
     <Compile Include="Migrations\201905281040100_TicketTypeMigration.Designer.cs">
       <DependentUpon>201905281040100_TicketTypeMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905281350582_VehicleTypeMigration.cs" />
+    <Compile Include="Migrations\201905281350582_VehicleTypeMigration.Designer.cs">
+      <DependentUpon>201905281350582_VehicleTypeMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905281409228_CatalogMigration.cs" />
+    <Compile Include="Migrations\201905281409228_CatalogMigration.Designer.cs">
+      <DependentUpon>201905281409228_CatalogMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905281504186_CatalogHistoryMigration.cs" />
+    <Compile Include="Migrations\201905281504186_CatalogHistoryMigration.Designer.cs">
+      <DependentUpon>201905281504186_CatalogHistoryMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905281626371_UpdatedUserMigration.cs" />
+    <Compile Include="Migrations\201905281626371_UpdatedUserMigration.Designer.cs">
+      <DependentUpon>201905281626371_UpdatedUserMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Catalog.cs" />
+    <Compile Include="Models\CatalogHistory.cs" />
     <Compile Include="Models\PassengerType.cs" />
     <Compile Include="Models\TicketType.cs" />
+    <Compile Include="Models\VehicleType.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
+    <Compile Include="Persistence\Repository\CatalogHistoryRepository.cs" />
+    <Compile Include="Persistence\Repository\CatalogRepository.cs" />
+    <Compile Include="Persistence\Repository\ICatalogHistoryRepository.cs" />
+    <Compile Include="Persistence\Repository\ICatalogRepository.cs" />
     <Compile Include="Persistence\Repository\IPassengerTypesRepository.cs" />
     <Compile Include="Persistence\Repository\IRepository.cs" />
     <Compile Include="Persistence\Repository\ITicketTypeRepository.cs" />
+    <Compile Include="Persistence\Repository\IVehicleTypeRepository.cs" />
     <Compile Include="Persistence\Repository\PassengerTypesRepository.cs" />
     <Compile Include="Persistence\Repository\Repository.cs" />
     <Compile Include="Persistence\Repository\TicketTypeRepository.cs" />
+    <Compile Include="Persistence\Repository\VehicleTypeRepository.cs" />
     <Compile Include="Persistence\UnitOfWork\DemoUnitOfWork.cs" />
     <Compile Include="Persistence\UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -390,6 +415,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905281040100_TicketTypeMigration.resx">
       <DependentUpon>201905281040100_TicketTypeMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905281350582_VehicleTypeMigration.resx">
+      <DependentUpon>201905281350582_VehicleTypeMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905281409228_CatalogMigration.resx">
+      <DependentUpon>201905281409228_CatalogMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905281504186_CatalogHistoryMigration.resx">
+      <DependentUpon>201905281504186_CatalogHistoryMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905281626371_UpdatedUserMigration.resx">
+      <DependentUpon>201905281626371_UpdatedUserMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

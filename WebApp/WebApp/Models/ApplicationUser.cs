@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -14,6 +15,28 @@ namespace WebApp.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        [Required]
+        [StringLength(15)]
+        public string FirstName { get; set; }
+        [Required]
+        [StringLength(15)]
+        public string LastName { get; set; }
+        [Required]
+        [StringLength(20)]
+        public string BirthDate { get; set; }
+        [Required]
+        [StringLength(30)]
+        public string Address { get; set; }
+        [Required]
+        public bool Approved { get; set; }
+        [Required]
+        public string ImageUrl { get; set; }
+        [Required]
+        [StringLength(30)]
+        public string VerificationStatus { get; set; }
+        public int? PassengerTypeId { get; set; }
+        public PassengerType PassengerType { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

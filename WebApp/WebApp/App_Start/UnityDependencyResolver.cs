@@ -71,6 +71,9 @@ namespace WebApp.App_Start
             container.RegisterType<DbContext, ApplicationDbContext>(new PerResolveLifetimeManager());
             container.RegisterType<IPassengerTypesRepository, PassengerTypesRepository>();
             container.RegisterType<ITicketTypeRepository, TicketTypeRepository>();
+            container.RegisterType<IVehicleTypeRepository, VehicleTypeRepository>();
+            container.RegisterType<ICatalogRepository, CatalogRepository>();
+            container.RegisterType<ICatalogHistoryRepository, CatalogHistoryRepository>();
             container.RegisterType<IUnitOfWork, DemoUnitOfWork>();
         }
 

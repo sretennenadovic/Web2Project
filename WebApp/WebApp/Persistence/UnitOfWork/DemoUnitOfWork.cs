@@ -17,6 +17,11 @@ namespace WebApp.Persistence.UnitOfWork
             _context = context;
         }
 
+        [Dependency]
+        public IPassengerTypesRepository PassengerTypes { get; set; }
+        [Dependency]
+        public ITicketTypeRepository TicketTypes { get; set; }
+
         public int Complete()
         {
             return _context.SaveChanges();

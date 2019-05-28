@@ -9,6 +9,8 @@ namespace WebApp.Persistence.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {
+        IPassengerTypesRepository PassengerTypes { get; set; }
+        ITicketTypeRepository TicketTypes { get; set; }
         int Complete();
     }
 }

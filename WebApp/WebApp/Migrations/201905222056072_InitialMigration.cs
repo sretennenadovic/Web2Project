@@ -77,6 +77,7 @@ namespace WebApp.Migrations
             
         }
         
+        //vratim stanje baze kakvo je bilo pre nekog vremena
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");

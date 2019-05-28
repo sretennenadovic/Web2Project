@@ -14,6 +14,14 @@ namespace WebApp.Persistence.UnitOfWork
         IVehicleTypeRepository VehicleTypes { get; set; }
         ICatalogRepository Catalogs { get; set; }
         ICatalogHistoryRepository CatalogHistories { get; set; }
+        ITicketRepository Tickets { get; set; }
+        IVehicleRepository Vehicles { get; set; }
+        ILineRepository Lines { get; set; }
+        IStationRepository Stations { get; set; }
+        IScheduleRepository Schedules { get; set; }
+        IScheduleTypeRepository ScheduleTypes { get; set; }
+        ILineTypeRepository LineTypes { get; set; }
+       
         int Complete();
     }
 }

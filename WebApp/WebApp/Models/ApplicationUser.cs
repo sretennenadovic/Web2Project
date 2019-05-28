@@ -37,6 +37,8 @@ namespace WebApp.Models
         public int? PassengerTypeId { get; set; }
         public PassengerType PassengerType { get; set; }
 
+        public List<Ticket> Tickets { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

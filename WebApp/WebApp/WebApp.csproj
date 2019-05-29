@@ -259,7 +259,13 @@
     <Compile Include="Controllers\LineTypesController.cs" />
     <Compile Include="Controllers\PassengerTypesController.cs" />
     <Compile Include="Controllers\SchedulesController.cs" />
+    <Compile Include="Controllers\ScheduleTypesController.cs" />
+    <Compile Include="Controllers\StationsController.cs" />
+    <Compile Include="Controllers\TicketsController.cs" />
+    <Compile Include="Controllers\TicketTypesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\VehiclesController.cs" />
+    <Compile Include="Controllers\VehicleTypesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -14,5 +14,6 @@ namespace WebApp.Models
         public string Name { get; set; }
         [Required]
         public float Discount { get; set; }
+        public List<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

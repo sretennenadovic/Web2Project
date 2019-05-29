@@ -18,5 +18,6 @@ namespace WebApp.Models
         [Required]
         public int TicketTypeId { get; set; }
         public TicketType TicketType { get; set; }
+        public List<Ticket> Tickets { get; set; }
     }
 }

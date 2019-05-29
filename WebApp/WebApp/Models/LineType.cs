@@ -12,5 +12,6 @@ namespace WebApp.Models
         [Required]
         [StringLength(15)]
         public string Name { get; set; }
+        public List<Line> Lines { get; set; }
     }
 }

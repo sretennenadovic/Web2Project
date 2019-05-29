@@ -21,6 +21,7 @@ namespace WebApp.Models
 
         public List<Station> Stations { get; set; }
         public List<Vehicle> Vehicles { get; set; }
+        public List<Schedule> Schedules { get; set; }
 
     }
 }

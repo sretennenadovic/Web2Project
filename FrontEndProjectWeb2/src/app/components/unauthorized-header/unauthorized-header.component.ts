@@ -16,7 +16,7 @@ export class UnauthorizedHeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  moveToLoginInComponent(){
+  moveToLogInComponent(){
     this.router.navigate(['unauthorizedUser','login'])
   }
 }

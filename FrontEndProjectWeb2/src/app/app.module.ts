@@ -7,6 +7,10 @@ import { UnauthorizedHeaderComponent } from './components/unauthorized-header/un
 import { UnauthorizedNavBarComponent } from './components/unauthorized-nav-bar/unauthorized-nav-bar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { TokenInterceptor } from './interceptors/token.interceptor';
+import { AuthService } from './services/auth.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const childrenRoutes : Routes = [
   {path:'login',component: LoginComponent},
@@ -29,9 +33,12 @@ const routes : Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi : true}, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

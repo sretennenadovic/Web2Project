@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { UnauthorizedHeaderComponent } from './unauthorized-header.component';
+import { UnauthorizedHeaderComponent } from "./unauthorized-header.component";
 
-describe('UnauthorizedHeaderComponent', () => {
+describe("UnauthorizedHeaderComponent", () => {
   let component: UnauthorizedHeaderComponent;
   let fixture: ComponentFixture<UnauthorizedHeaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UnauthorizedHeaderComponent ]
-    })
-    .compileComponents();
+      declarations: [UnauthorizedHeaderComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('UnauthorizedHeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

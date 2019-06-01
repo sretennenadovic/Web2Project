@@ -309,6 +309,7 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\BindingModels\ScheduleInfo.cs" />
     <Compile Include="Models\Catalog.cs" />
     <Compile Include="Models\CatalogHistory.cs" />
     <Compile Include="Models\Line.cs" />

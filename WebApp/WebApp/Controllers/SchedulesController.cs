@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebApp.Models;
+using WebApp.Models.BindingModels;
 using WebApp.Persistence;
 using WebApp.Persistence.UnitOfWork;
 
@@ -106,6 +107,19 @@ namespace WebApp.Controllers
             db.Complete();
 
             return Ok(schedule);
+        }
+
+        [Route("api/Schedules/GetScheduleInfo")]
+        [ResponseType(typeof(ScheduleInfo))]
+        public IHttpActionResult GetScheduleInfo()
+        {
+
+            ScheduleInfo s = new ScheduleInfo();
+            s.Lines = db.Lines.GetAll();
+            s.LineTypes = db.LineTypes.GetAll();
+            s.ScheduleTypes = db.ScheduleTypes.GetAll();
+
+            return Ok(s);
         }
 
         protected override void Dispose(bool disposing)

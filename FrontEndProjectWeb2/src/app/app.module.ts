@@ -11,10 +11,18 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { AuthService } from './services/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ScheduleComponent } from './components/schedule/schedule.component';
+import { LinesComponent } from './components/lines/lines.component';
+import { VehicleLocationsComponent } from './components/vehicle-locations/vehicle-locations.component';
+import { CatalogComponent } from './components/catalog/catalog.component';
 
 const childrenRoutes : Routes = [
   {path:'login',component: LoginComponent},
-  {path:'register',component: RegisterComponent}
+  {path:'register',component: RegisterComponent},
+  {path:'schedule',component: ScheduleComponent},
+  {path:'lines',component: LinesComponent},
+  {path:'vehicleLocations',component: VehicleLocationsComponent},
+  {path:'catalog',component: CatalogComponent}
 ]
 
 const routes : Routes = [
@@ -29,7 +37,11 @@ const routes : Routes = [
     UnauthorizedHeaderComponent,
     UnauthorizedNavBarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ScheduleComponent,
+    LinesComponent,
+    VehicleLocationsComponent,
+    CatalogComponent
   ],
   imports: [
     BrowserModule,

@@ -13,11 +13,9 @@ export class ScheduleComponent implements OnInit {
   constructor(private http: ScheduleHttpService) {}
 
   ngOnInit() {
-    this.http.getAll().subscribe(
+    this.http.getSpecific().subscribe(
       values => {
-        (this.values.LineTypes = values.LineTypes),
-          (this.values.Lines = values.Lines),
-          (this.values.ScheduleTypes = values.ScheduleTypes),
+        (this.values = values)
           console.log(values);
       },
       err => console.log(err)

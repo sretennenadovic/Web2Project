@@ -9,11 +9,15 @@ export class BaseHttpService<T> {
 
   constructor(private http: HttpClient) {}
   //za sve ostalo isto idu metode
-  getAll(): Observable<T> {
-    return this.http.get<T>(this.baseUrl + this.specificUrl);
+  getAll(): Observable<T[]> {
+    return this.http.get<T[]>(this.baseUrl + this.specificUrl);
   }
 
   getById(id: number): Observable<T> {
     return this.http.get<T>(this.baseUrl + this.specificUrl + `/${id}`);
+  }
+
+  getSpecific():Observable<T>{
+    return this.http.get<T>(this.baseUrl + this.specificUrl);
   }
 }

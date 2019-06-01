@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebApp.Models;
+using WebApp.Models.BindingModels;
 using WebApp.Persistence;
 using WebApp.Persistence.UnitOfWork;
 
@@ -106,6 +107,18 @@ namespace WebApp.Controllers
             db.Complete();
 
             return Ok(catalog);
+        }
+
+        [Route("api/Catalogs/GetCatalogInfo")]
+        [ResponseType(typeof(CatalogInfo))]
+        public IHttpActionResult GetCatalogInfo()
+        {
+
+            CatalogInfo ci = new CatalogInfo();
+            ci.TicketTypes = db.TicketTypes.GetAll();
+            ci.PassengerTypes = db.PassengerTypes.GetAll();
+
+            return Ok(ci);
         }
 
         protected override void Dispose(bool disposing)

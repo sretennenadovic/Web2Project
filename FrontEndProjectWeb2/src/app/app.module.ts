@@ -17,6 +17,7 @@ import { VehicleLocationsComponent } from "./components/vehicle-locations/vehicl
 import { CatalogComponent } from "./components/catalog/catalog.component";
 import { BaseHttpService } from "./services/http/base-http.service";
 import { ScheduleHttpService } from "./services/schedule/schedule.service";
+import { CatalogHttpService } from './services/catalog/catalog.service';
 
 const childrenRoutes: Routes = [
   { path: "login", component: LoginComponent },
@@ -60,7 +61,8 @@ const routes: Routes = [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     AuthService,
     BaseHttpService,
-    ScheduleHttpService
+    ScheduleHttpService,
+    CatalogHttpService
   ],
   bootstrap: [AppComponent]
 })

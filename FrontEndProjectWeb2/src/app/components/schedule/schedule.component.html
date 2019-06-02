@@ -1,3 +1,18 @@
 <p>
-  schedule works!
+  Vrsta linije:
 </p>
+
+<select [(ngModel)]="values.LineTypes">
+    <option *ngFor="let value of values.LineTypes" [value]="value.Id">
+      {{value.Name}}
+    </option>
+</select>
+<p>
+  Vrsta reda voznje:
+</p>
+
+<select [(ngModel)]="values.ScheduleTypes">
+    <option *ngFor="let value of values.ScheduleTypes" [value]="value.Id">
+      {{value.Name}}
+    </option>
+</select>

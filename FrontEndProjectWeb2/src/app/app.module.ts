@@ -18,8 +18,11 @@ import { CatalogComponent } from "./components/catalog/catalog.component";
 import { BaseHttpService } from "./services/http/base-http.service";
 import { ScheduleHttpService, ScheduleLineHttpService } from "./services/schedule/schedule.service";
 import { CatalogHttpService } from './services/catalog/catalog.service';
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminNavBarComponent } from './components/admin-nav-bar/admin-nav-bar.component';
+import { AuthorizedUserHeaderComponent } from './components/authorized-user-header/authorized-user-header.component';
 
-const childrenRoutes: Routes = [
+const childrenUnauthorizedRoutes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "schedule", component: ScheduleComponent },
@@ -28,13 +31,21 @@ const childrenRoutes: Routes = [
   { path: "catalog", component: CatalogComponent }
 ];
 
+const childrenAdminRoutes: Routes = [
+];
+
 const routes: Routes = [
   {
     path: "unauthorizedUser",
     component: UnauthorizedUserComponent,
-    children: childrenRoutes
+    children: childrenUnauthorizedRoutes
   },
-  { path: "", redirectTo: "/unauthorizedUser", pathMatch: "full" }
+  { path: "", redirectTo: "/unauthorizedUser", pathMatch: "full" },
+  {
+    path: "admin",
+    component: AdminComponent,
+    children: childrenAdminRoutes
+  }
 ];
 
 @NgModule({
@@ -48,7 +59,10 @@ const routes: Routes = [
     ScheduleComponent,
     LinesComponent,
     VehicleLocationsComponent,
-    CatalogComponent
+    CatalogComponent,
+    AdminComponent,
+    AdminNavBarComponent,
+    AuthorizedUserHeaderComponent
   ],
   imports: [
     BrowserModule,

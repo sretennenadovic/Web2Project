@@ -311,10 +311,10 @@ C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.Veh
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.CatalogMigration.resources
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.CatalogHistoryMigration.resources
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.UpdatedUserAndTicketMigration.resources
-C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.RestModelMigration.resources
 C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migrations.UpdatedUserAndTicketMigration.resources
 C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migrations.RestModelMigration.resources
 C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migrations.CorrectionMigration1.resources
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.CorrectionMigration1.resources
 C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache
+C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache

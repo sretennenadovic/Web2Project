@@ -11,7 +11,7 @@ import { User } from '../models/logInUser';
 export class AuthService {
   isLoggedIn = false;
 
-  loginUrl: string = 'http://localhost:52295/oauth/token';
+  loginUrl: string = 'http://localhost:52295/oauth/ng ';
 
   constructor(private http: HttpClient) { }
 

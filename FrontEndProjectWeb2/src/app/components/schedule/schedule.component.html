@@ -2,17 +2,24 @@
   Vrsta linije:
 </p>
 
-<select [(ngModel)]="values.LineTypes">
-    <option *ngFor="let value of values.LineTypes" [value]="value.Id">
-      {{value.Name}}
+<select [(ngModel)]="selectedLineType" (change)="changeOfLineType()">
+    <option *ngFor="let lineType of values.LineTypes" [ngValue]="lineType">
+      {{lineType.Name}}
     </option>
 </select>
 <p>
   Vrsta reda voznje:
 </p>
 
-<select [(ngModel)]="values.ScheduleTypes">
-    <option *ngFor="let value of values.ScheduleTypes" [value]="value.Id">
-      {{value.Name}}
+<select [(ngModel)]="selectedScheduleType" (change)="changeOfScheduleType()">
+    <option *ngFor="let scheduleType of values.ScheduleTypes" [ngValue]="scheduleType">
+      {{scheduleType.Name}}
     </option>
 </select>
+
+<p>Linije:</p>
+<ul *ngFor="let lines of values.Lines" (click) = "selectedLine(lines)">
+  <li *ngIf="selectedLineType.Id===lines.LineTypeId">{{lines.Name}}</li>
+</ul>
+
+<div>Rezultat odabranog: {{schedule?.Departure}}</div>

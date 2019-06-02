@@ -116,10 +116,21 @@ namespace WebApp.Controllers
 
             ScheduleInfo s = new ScheduleInfo();
             s.Lines = db.Lines.GetAll();
+            /*foreach (var item in s.Lines)
+            {
+                item.Schedules = db.Schedules.Find(f => f.LineId == item.Id).ToList();
+            }*/
             s.LineTypes = db.LineTypes.GetAll();
             s.ScheduleTypes = db.ScheduleTypes.GetAll();
 
             return Ok(s);
+        }
+
+        [Route("api/Schedules/GetScheduleForSelectedLine/{idLine}/{idTypeSchedule}")]
+        [ResponseType(typeof(Schedule))]
+        public IHttpActionResult GetScheduleForSelectedLine(int idLine, int idTypeSchedule)
+        {        
+            return Ok(db.Schedules.Find(x=>  x.LineId == idLine && x.ScheduleTypeId == idTypeSchedule));
         }
 
         protected override void Dispose(bool disposing)

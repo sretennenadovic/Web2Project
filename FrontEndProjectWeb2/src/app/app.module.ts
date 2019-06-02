@@ -16,7 +16,7 @@ import { LinesComponent } from "./components/lines/lines.component";
 import { VehicleLocationsComponent } from "./components/vehicle-locations/vehicle-locations.component";
 import { CatalogComponent } from "./components/catalog/catalog.component";
 import { BaseHttpService } from "./services/http/base-http.service";
-import { ScheduleHttpService } from "./services/schedule/schedule.service";
+import { ScheduleHttpService, ScheduleLineHttpService } from "./services/schedule/schedule.service";
 import { CatalogHttpService } from './services/catalog/catalog.service';
 
 const childrenRoutes: Routes = [
@@ -62,7 +62,8 @@ const routes: Routes = [
     AuthService,
     BaseHttpService,
     ScheduleHttpService,
-    CatalogHttpService
+    CatalogHttpService,
+    ScheduleLineHttpService
   ],
   bootstrap: [AppComponent]
 })

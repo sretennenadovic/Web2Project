@@ -1,3 +1,18 @@
 <p>
-  catalog works!
-</p>
+    Vrsta karte:
+  </p>
+  
+  <select [(ngModel)]="selectedTicketType" (change)="changeOfTicketType()">
+      <option *ngFor="let ticketType of values.TicketTypes" [ngValue]="ticketType">
+        {{ticketType.Name}}
+      </option>
+  </select>
+  <p>
+    Tip putnika:
+  </p>
+  
+  <select [(ngModel)]="selectedPassengerType" (change)="changeOfPassengerType()">
+      <option *ngFor="let passengerType of values.PassengerTypes" [ngValue]="passengerType">
+        {{passengerType.Name}}
+      </option>
+  </select>

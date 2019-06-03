@@ -33,7 +33,16 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authService.login(this.loginForm.value).subscribe((data) => {
-      console.log(data);
+      if(data === 'admin'){
+        this.router.navigate(['admin'])
+      }else if(data === 'kontrolor'){
+        //this.router.navigate(['kontrolor'])
+      }else if(data === 'putnik'){
+        //this.router.navigate(['putnik'])
+      }else if(data === 'greska'){
+        alert("Nevalidni username ili password");
+      }
+      
     });
   }
 

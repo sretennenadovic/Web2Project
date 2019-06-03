@@ -305,12 +305,17 @@
     <Compile Include="Migrations\201905291223051_CorrectionMigration1.Designer.cs">
       <DependentUpon>201905291223051_CorrectionMigration1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906031120123_changesOfDateTimeFormat.cs" />
+    <Compile Include="Migrations\201906031120123_changesOfDateTimeFormat.Designer.cs">
+      <DependentUpon>201906031120123_changesOfDateTimeFormat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\BindingModels\CatalogInfo.cs" />
     <Compile Include="Models\BindingModels\ScheduleInfo.cs" />
+    <Compile Include="Models\BindingModels\TicketPrices.cs" />
     <Compile Include="Models\Catalog.cs" />
     <Compile Include="Models\CatalogHistory.cs" />
     <Compile Include="Models\Line.cs" />
@@ -476,6 +481,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905291223051_CorrectionMigration1.resx">
       <DependentUpon>201905291223051_CorrectionMigration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906031120123_changesOfDateTimeFormat.resx">
+      <DependentUpon>201906031120123_changesOfDateTimeFormat.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

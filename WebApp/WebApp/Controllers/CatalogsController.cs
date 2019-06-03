@@ -110,15 +110,34 @@ namespace WebApp.Controllers
         }
 
         [Route("api/Catalogs/GetCatalogInfo")]
-        [ResponseType(typeof(CatalogInfo))]
+        [ResponseType(typeof(TicketPrices))]
         public IHttpActionResult GetCatalogInfo()
         {
+            db.Catalogs.Add(new Catalog() { ValidFrom = DateTime.Now, ValidTo = DateTime.Now });
+            db.Complete();
+            List<TicketPrices> tp = new List<TicketPrices>();
+            float price = 0;
+            foreach (var item in db.TicketTypes.GetAll())
+            {
+                foreach (var item2 in db.PassengerTypes.GetAll())
+                {
+                    price = getPrice(item.Id, item2.Id);
+                    tp.Add(new TicketPrices() { TicketName = item.Name, PassengerTypeString = item2.Name, Price = price});
+                }
+            }
 
-            CatalogInfo ci = new CatalogInfo();
-            ci.TicketTypes = db.TicketTypes.GetAll();
-            ci.PassengerTypes = db.PassengerTypes.GetAll();
+            return Ok(tp);
+        }
 
-            return Ok(ci);
+        //racunanje cene karte za odredjen tip karte, odredjenog korisnika po zadnjem cenovniku
+        private float getPrice(int id1, int id2)
+        {         
+            int catalog = db.Catalogs.Find(x => x.ValidFrom < DateTime.Now && x.ValidTo > DateTime.Now).FirstOrDefault().Id;
+
+            float cHistory = db.CatalogHistories.Find(x => x.TicketTypeId == id1 && x.CatalogId == catalog).FirstOrDefault().TicketPrice;
+            float discount = db.PassengerTypes.Find(x => x.Id == id2).FirstOrDefault().Discount;
+
+            return discount * cHistory;
         }
 
         protected override void Dispose(bool disposing)

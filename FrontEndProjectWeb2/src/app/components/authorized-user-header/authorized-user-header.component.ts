@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-authorized-user-header',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthorizedUserHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private httpLogOut: AuthService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  LogOut(){
+    this.httpLogOut.logout();
+    this.router.navigate(['unauthorizedUser','login'])
   }
 
 }

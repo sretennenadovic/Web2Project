@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -10,11 +11,11 @@ namespace WebApp.Models
     {
         public int Id { get; set; }
         [Required]
-        [StringLength(20)]
-        public string ValidFrom { get; set; }
+        [Column(TypeName ="datetime2")]
+        public DateTime ValidFrom { get; set; }
         [Required]
-        [StringLength(20)]
-        public string ValidTo { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime ValidTo { get; set; }
         public List<CatalogHistory> CatalogHistories { get; set; }
 
     }

@@ -130,7 +130,7 @@ namespace WebApp.Controllers
         [ResponseType(typeof(Schedule))]
         public IHttpActionResult GetScheduleForSelectedLine(int idLine, int idTypeSchedule)
         {        
-            return Ok(db.Schedules.Find(x=>  x.LineId == idLine && x.ScheduleTypeId == idTypeSchedule));
+            return Ok(db.Schedules.Find(x=>  x.LineId == idLine && x.ScheduleTypeId == idTypeSchedule).FirstOrDefault());
         }
 
         protected override void Dispose(bool disposing)

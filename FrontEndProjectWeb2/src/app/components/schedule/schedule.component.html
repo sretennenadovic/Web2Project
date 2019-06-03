@@ -18,8 +18,10 @@
 </select>
 
 <p>Linije:</p>
+<div>
 <ul *ngFor="let lines of values.Lines" (click) = "selectedLine(lines)">
   <li *ngIf="selectedLineType.Id===lines.LineTypeId">{{lines.Name}}</li>
 </ul>
+</div>
 
-<div>Rezultat odabranog: {{schedule?.Departure}}</div>
+<div>Rezultat odabranog: {{schedule.Departure}}</div>

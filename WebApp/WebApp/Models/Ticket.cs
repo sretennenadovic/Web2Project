@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -20,7 +21,7 @@ namespace WebApp.Models
         [Required]
         public bool IsValid { get; set; }
         [Required]
-        [StringLength(20)]
-        public string TimeIssued { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime TimeIssued { get; set; }
     }
 }

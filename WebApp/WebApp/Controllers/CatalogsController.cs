@@ -110,23 +110,27 @@ namespace WebApp.Controllers
         }
 
         [Route("api/Catalogs/GetCatalogInfo")]
-        [ResponseType(typeof(TicketPrices))]
+        [ResponseType(typeof(CatalogInfo))]
         public IHttpActionResult GetCatalogInfo()
         {
-            db.Catalogs.Add(new Catalog() { ValidFrom = DateTime.Now, ValidTo = DateTime.Now });
-            db.Complete();
+            CatalogInfo ci = new CatalogInfo();
+            ci.PassengerTypes = db.PassengerTypes.GetAll();
+            ci.TicketTypes = db.TicketTypes.GetAll();
+
             List<TicketPrices> tp = new List<TicketPrices>();
             float price = 0;
-            foreach (var item in db.TicketTypes.GetAll())
+            foreach (var item in ci.TicketTypes)
             {
-                foreach (var item2 in db.PassengerTypes.GetAll())
+                foreach (var item2 in ci.PassengerTypes)
                 {
                     price = getPrice(item.Id, item2.Id);
                     tp.Add(new TicketPrices() { TicketName = item.Name, PassengerTypeString = item2.Name, Price = price});
                 }
             }
+            
+            ci.TicketPrices = tp;
 
-            return Ok(tp);
+            return Ok(ci);
         }
 
         //racunanje cene karte za odredjen tip karte, odredjenog korisnika po zadnjem cenovniku

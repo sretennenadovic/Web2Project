@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   constructor(private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if(localStorage.jwt === null || localStorage.jwt === "" || localStorage.jwt == "undefined")  {
+    if(localStorage.jwt === null || localStorage.jwt === "" || localStorage.jwt == "undefined" || localStorage.jwt == undefined)  {
       console.error("Can't access, not logged in");
       alert("Niste logovani!")
       this.router.navigate(['unauthorizedUser','login']);

@@ -1,18 +1,26 @@
-
-<form [formGroup]="loginForm" (ngSubmit)="login()">
-  <label>
-    Username:
-    <input type="text" formControlName="username" required>
-  </label>
-
-  <label>
-    Password:
-    <input type="text" formControlName="password" required>
-  </label>
-
-  <button type="submit" [disabled]="!loginForm.valid" *ngIf="!authService.isLoggedIn">Login</button>
-  <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
-</form>
-<button (click) = 'moveToRegisterComponent()'>Register</button>
+<div class="sidenav">
+    <div class="login-main-text">
+       <h2>JGSP<br> Stranica za prijavu</h2>
+       <p>Prijavi se ili se registruj da bi koristio nase usluge.</p>
+    </div>
+ </div>
+ <div class="main">
+    <div class="col-md-6 col-sm-12">
+       <div class="login-form">
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
+             <div class="form-group">
+                <label>User Name</label>
+                <input type="text" formControlName="username" required class="form-control" placeholder="User Name">
+             </div>
+             <div class="form-group">
+                <label>Password</label>
+                <input type="text" formControlName="password" required class="form-control" placeholder="Password">
+             </div>
+             <button type="submit" [disabled]="!loginForm.valid" *ngIf="!authService.isLoggedIn" class="btn btn-black">Login</button>
+             <button (click) = 'moveToRegisterComponent()' class="btn btn-secondary">Register</button>
+          </form>
+       </div>
+    </div>
+ </div>
 
 

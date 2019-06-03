@@ -1,18 +1,23 @@
-<p>
-    Vrsta karte:
-  </p>
-  
-  <select [(ngModel)]="selectedTicketType" (change)="changeOfTicketType()">
-      <option *ngFor="let ticketType of values.TicketTypes" [ngValue]="ticketType">
-        {{ticketType.Name}}
-      </option>
-  </select>
-  <p>
-    Tip putnika:
-  </p>
-  
-  <select [(ngModel)]="selectedPassengerType" (change)="changeOfPassengerType()">
-      <option *ngFor="let passengerType of values.PassengerTypes" [ngValue]="passengerType">
-        {{passengerType.Name}}
-      </option>
-  </select>
+<h2>Cenovnik</h2>
+<div class="container">
+	<div class="row">
+        <div class="span12">
+    		<table class="table table-condensed table-hover">
+    			<thead>
+    				<tr>
+    					<th> </th>
+    					<th *ngFor="let ticketType of values.TicketTypes">{{ticketType.Name}}</th>
+    				</tr>
+    			</thead>
+    			<tbody>
+    				<tr *ngFor="let passengerType of values.PassengerTypes">
+              <th>{{passengerType.Name}}</th>
+              <ng-container *ngFor="let ticketPrice of values.TicketPrices">
+                <td  *ngIf="passengerType.Name===ticketPrice.PassengerTypeString">{{ticketPrice.Price}}</td>
+              </ng-container>
+            </tr>				
+    			</tbody>
+    		</table>
+    	</div>
+	</div>
+</div>

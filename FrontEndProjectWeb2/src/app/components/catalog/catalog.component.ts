@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CatalogHttpService } from 'src/app/services/catalog/catalog.service';
 import { CatalogInfo } from 'src/app/models/CatalogInfo';
-import { TicketType } from 'src/app/models/TicketType';
-import { PassengerType } from 'src/app/models/PassengerType';
 
 @Component({
   selector: 'app-catalog',
@@ -10,10 +8,8 @@ import { PassengerType } from 'src/app/models/PassengerType';
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent implements OnInit {
-
-  values:CatalogInfo;
-  selectedTicketType:TicketType = new TicketType();
-  selectedPassengerType:PassengerType = new PassengerType();
+  
+  values:CatalogInfo
 
   constructor(private http: CatalogHttpService) { }
 

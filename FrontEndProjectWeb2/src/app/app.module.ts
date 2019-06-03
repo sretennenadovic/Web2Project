@@ -21,7 +21,6 @@ import { CatalogHttpService } from './services/catalog/catalog.service';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminNavBarComponent } from './components/admin-nav-bar/admin-nav-bar.component';
 import { AuthorizedUserHeaderComponent } from './components/authorized-user-header/authorized-user-header.component';
-import { AuthGuard } from './auth/auth.guard';
 
 const childrenUnauthorizedRoutes: Routes = [
   { path: "login", component: LoginComponent },
@@ -45,7 +44,6 @@ const routes: Routes = [
   {
     path: "admin",
     component: AdminComponent,
-    canActivate: [AuthGuard],
     children: childrenAdminRoutes
   }
 ];

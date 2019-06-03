@@ -318,4 +318,3 @@ C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migration
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.CorrectionMigration1.resources
 C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache
-C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.changesOfDateTimeFormat.resources

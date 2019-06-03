@@ -11,15 +11,13 @@ import { User } from '../models/logInUser';
 export class AuthService {
   isLoggedIn = false;
 
-  loginUrl: string = 'http://localhost:52295/oauth/token';
+  loginUrl: string = 'http://localhost:52295/oauth/ng ';
 
   constructor(private http: HttpClient) { }
 
   login(user: User): Observable<any> {
-    return Observable.create((observer) => {
-      
-      this.http.post<any>(this.loginUrl, `username=`+ user.username +`&password=`+ user.password + `&grant_type=password`, { 'headers': { 'Content-type': 'x-www-form-urlencoded' } }).subscribe(
-      res => {
+    return this.http.post<any>(this.loginUrl, `username=`+ user.username +`&password=`+ user.password + `&grant_type=password`, { 'headers': { 'Content-type': 'x-www-form-urlencoded' } }).pipe(
+      map(res => {
         console.log(res.access_token);
 
         let jwt = res.access_token;
@@ -37,17 +35,10 @@ export class AuthService {
 
         localStorage.setItem('jwt', jwt)
         localStorage.setItem('role', role);
+      }),
 
-        if(role === "Admin"){
-          observer.next('admin');
-          observer.complete();
-        }
-
-      }, err => {observer.next('greska');
-        observer.complete(); }
-      )
-      }  
-    )    
+      catchError(this.handleError<any>('login'))
+    );
   }
 
   logout(): void {

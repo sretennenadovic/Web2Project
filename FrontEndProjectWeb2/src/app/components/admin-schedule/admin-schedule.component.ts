@@ -1,24 +1,25 @@
-import { Component, OnInit } from "@angular/core";
-import { ScheduleHttpService, ScheduleLineHttpService } from "src/app/services/schedule/schedule.service";
-import { ScheduleInfo } from "src/app/models/scheduleInfo";
+import { Component, OnInit } from '@angular/core';
+import { ScheduleInfo } from 'src/app/models/scheduleInfo';
 import { ScheduleType } from 'src/app/models/ScheduleType';
 import { LineType } from 'src/app/models/LineType';
+import { ScheduleHttpService, ScheduleLineHttpService } from 'src/app/services/schedule/schedule.service';
 import { Line } from 'src/app/models/Line';
 import { Schedule } from 'src/app/models/Schedule';
 
 @Component({
-  selector: "app-schedule",
-  templateUrl: "./schedule.component.html",
-  styleUrls: ["./schedule.component.css"]
+  selector: 'app-admin-schedule',
+  templateUrl: './admin-schedule.component.html',
+  styleUrls: ['./admin-schedule.component.css']
 })
-export class ScheduleComponent implements OnInit {
+export class AdminScheduleComponent implements OnInit {
+
   values: ScheduleInfo = new ScheduleInfo();
   selectedScheduleType:ScheduleType = new ScheduleType();
   selectedLineType:LineType = new LineType();
   selectedL:Line = new Line();
   schedule: Schedule = new Schedule();
 
-  constructor(private http: ScheduleHttpService, private sheduleLineService:ScheduleLineHttpService) {}
+  constructor(private http: ScheduleHttpService, private sheduleLineService:ScheduleLineHttpService) { }
 
   ngOnInit() {
     this.http.getSpecific().subscribe(

@@ -87,6 +87,9 @@ namespace WebApp.Controllers
                 return BadRequest(ModelState);
             }
 
+            //ovde moram proveriti dal postoje ona 2 strana kljuca vec u tabeli ako da vratim string
+            //ne moze ako ne vratim string uspesno
+
             db.Schedules.Add(schedule);
             db.Complete();
 

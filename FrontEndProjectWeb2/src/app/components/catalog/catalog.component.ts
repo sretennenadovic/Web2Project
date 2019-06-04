@@ -12,7 +12,7 @@ import { CatalogInfo } from 'src/app/models/CatalogInfo';
 })
 export class CatalogComponent implements OnInit {
 
-  values:CatalogInfo;
+  values:CatalogInfo = new CatalogInfo();
 
   constructor(private http: CatalogHttpService) { }
 

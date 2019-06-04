@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OneTimeTicketService } from 'src/app/services/ticket/ticket.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Ticket } from 'src/app/models/Ticket';
+import { TicketUnauthorized } from 'src/app/models/TicketUnauthorized';
 
 @Component({
   selector: 'app-unauthorized-buy-ticket',
@@ -21,7 +23,7 @@ export class UnauthorizedBuyTicketComponent implements OnInit {
 
   buyOneTimeTicket(){
     this.buyOneTimeTIcketService.postOneTimeTicket(this.buyOneTimeTicketForm.value).subscribe((data) => {
-      alert("Uspesno ste kupili kartu u "+data.TimeIsshued+", i vazi u narednih sat vremena!");
+      alert("Uspesno ste kupili kartu u "+(data as Date)+", i vazi u narednih sat vremena!");
     }), err=>console.log(err);
   }
 

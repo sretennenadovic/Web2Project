@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
           <div class="span12">
-<table class="table table-condensed table-hover">
+<table class="table table-condensed ">
   <tbody>
     <tr>
       <td>Vrsta linije:</td>
@@ -10,6 +10,10 @@
             {{lineType.Name}}
           </option>
       </select></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><button class="btn btn-secondary">Dodaj R.voznje</button></td>
     </tr>
     <tr>
       <td>Vrsta reda voznje:</td>
@@ -18,6 +22,10 @@
             {{scheduleType.Name}}
           </option>
       </select></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><button class="btn btn-secondary">Izmeni R.voznje</button></td>
     </tr>
     <tr>
       <td>Linije:</td>
@@ -28,6 +36,10 @@
           </option>
           </ng-container>
       </select></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><button class="btn btn-secondary">Obrisi R.voznje</button></td>      
     </tr>
     <tr>
       <td><button (click)="changeOfLine()" class="btn btn-secondary">Red voznje</button></td>

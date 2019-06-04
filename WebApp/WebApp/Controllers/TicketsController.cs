@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebApp.Models;
+using WebApp.Models.BindingModels;
 using WebApp.Persistence;
 using WebApp.Persistence.UnitOfWork;
 
@@ -108,10 +109,12 @@ namespace WebApp.Controllers
             return Ok(ticket);
         }
 
-        [Route("api/Tickets/UnauthorizedTicket")]
-        [ResponseType(typeof(Ticket))]
-        public IHttpActionResult UnauthorizedTicket(Ticket ticket)
+        [Route("api/Tickets/PostUnauthorizedTicket")]
+        [ResponseType(typeof(DateTime))]
+        public IHttpActionResult PostUnauthorizedTicket(TicketUnauthorized tu)
         {
+            string s = tu.mail;
+            Ticket ticket = new Ticket();
             ticket.IsValid = true;
             ticket.TicketTypeId = db.TicketTypes.Find(x => x.Name.Equals("Vremenska")).FirstOrDefault().Id;
             ticket.ApplicationUserId = null;
@@ -122,7 +125,7 @@ namespace WebApp.Controllers
             db.Tickets.Add(ticket);
             db.Complete();
 
-            return CreatedAtRoute("DefaultApi", new { id = ticket.Id }, ticket);
+            return Ok(ticket.TimeIssued);
         }
 
 

@@ -24,6 +24,7 @@ import { AuthorizedUserHeaderComponent } from './components/authorized-user-head
 import { AuthGuard } from './auth/auth.guard';
 import { UnauthorizedBuyTicketComponent } from './components/unauthorized-buy-ticket/unauthorized-buy-ticket.component';
 import { TicketPostService } from './services/ticket/ticket.service';
+import { AdminScheduleComponent } from './components/admin-schedule/admin-schedule.component';
 
 const childrenUnauthorizedRoutes: Routes = [
   { path: "login", component: LoginComponent },
@@ -36,6 +37,7 @@ const childrenUnauthorizedRoutes: Routes = [
 ];
 
 const childrenAdminRoutes: Routes = [
+  {path: "adminSchedule", component: AdminScheduleComponent}
 ];
 
 const routes: Routes = [
@@ -44,7 +46,7 @@ const routes: Routes = [
     component: UnauthorizedUserComponent,
     children: childrenUnauthorizedRoutes
   },
-  { path: "", redirectTo: "/unauthorizedUser", pathMatch: "full" },
+  { path: "", redirectTo: "/unauthorizedUser/login", pathMatch: "full" },
   {
     path: "admin",
     component: AdminComponent,
@@ -68,7 +70,8 @@ const routes: Routes = [
     AdminComponent,
     AdminNavBarComponent,
     AuthorizedUserHeaderComponent,
-    UnauthorizedBuyTicketComponent
+    UnauthorizedBuyTicketComponent,
+    AdminScheduleComponent
   ],
   imports: [
     BrowserModule,

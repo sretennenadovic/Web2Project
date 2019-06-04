@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { Ticket } from 'src/app/models/Ticket';
+import { TicketUnauthorized } from 'src/app/models/TicketUnauthorized';
 
 @Injectable()
 export class BaseHttpService<T> {
@@ -21,8 +23,8 @@ export class BaseHttpService<T> {
     return this.http.post<any>(this.baseUrl + this.specificUrl, data, options);
   }
 
-  postOneTimeTicket(data:any, options?:any):Observable<any>{
-    return this.http.post<any>(this.baseUrl + this.specificUrl, data, options);
+  postOneTimeTicket(tu:TicketUnauthorized, options?:any):Observable<any>{
+    return this.http.post<any>(this.baseUrl + this.specificUrl, tu, options);
   }
 
   //Dobravljanje odredjenih info sa servera, pri inicijalizaciji izgleda komponenti

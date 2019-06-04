@@ -8,5 +8,5 @@ export class TicketPostService extends BaseHttpService<any>{
 
 @Injectable()
 export class OneTimeTicketService extends BaseHttpService<any>{
-    specificUrl = "/api/Tickets/UnauthorizedTicket";
+    specificUrl = "/api/Tickets/PostUnauthorizedTicket";
 }

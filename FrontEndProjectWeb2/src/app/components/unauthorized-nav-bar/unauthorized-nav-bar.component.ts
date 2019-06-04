@@ -28,4 +28,8 @@ export class UnauthorizedNavBarComponent implements OnInit {
   catalog(){
     this.router.navigate(['unauthorizedUser','catalog'])
   }
+
+  buyTicket(){
+    this.router.navigate(['unauthorizedUser','buyOneTimeTicket'])
+  }
 }

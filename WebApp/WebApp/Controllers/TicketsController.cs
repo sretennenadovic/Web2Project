@@ -85,7 +85,7 @@ namespace WebApp.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+          
             db.Tickets.Add(ticket);
             db.Complete();
 
@@ -107,6 +107,24 @@ namespace WebApp.Controllers
 
             return Ok(ticket);
         }
+
+        [Route("api/Tickets/UnauthorizedTicket")]
+        [ResponseType(typeof(Ticket))]
+        public IHttpActionResult UnauthorizedTicket(Ticket ticket)
+        {
+            ticket.IsValid = true;
+            ticket.TicketTypeId = db.TicketTypes.Find(x => x.Name.Equals("Vremenska")).FirstOrDefault().Id;
+            ticket.ApplicationUserId = null;
+            int catalog = db.Catalogs.Find(x => x.ValidFrom < DateTime.Now && x.ValidTo > DateTime.Now).FirstOrDefault().Id;
+            ticket.CatalogHistoryId = db.CatalogHistories.Find(x => x.TicketTypeId == ticket.TicketTypeId && x.CatalogId == catalog).FirstOrDefault().Id;
+            ticket.TimeIssued = DateTime.Now;
+         
+            db.Tickets.Add(ticket);
+            db.Complete();
+
+            return CreatedAtRoute("DefaultApi", new { id = ticket.Id }, ticket);
+        }
+
 
         protected override void Dispose(bool disposing)
         {

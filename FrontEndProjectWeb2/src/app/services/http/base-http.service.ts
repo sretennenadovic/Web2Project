@@ -17,6 +17,14 @@ export class BaseHttpService<T> {
     return this.http.get<T>(this.baseUrl + this.specificUrl + `/${id}`);
   }
 
+  post(data:any, options?:any):Observable<any>{
+    return this.http.post<any>(this.baseUrl + this.specificUrl, data, options);
+  }
+
+  postOneTimeTicket(data:any, options?:any):Observable<any>{
+    return this.http.post<any>(this.baseUrl + this.specificUrl, data, options);
+  }
+
   //Dobravljanje odredjenih info sa servera, pri inicijalizaciji izgleda komponenti
   getSpecific():Observable<T>{
     return this.http.get<T>(this.baseUrl + this.specificUrl);

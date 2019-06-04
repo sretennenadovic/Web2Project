@@ -22,6 +22,8 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AdminNavBarComponent } from './components/admin-nav-bar/admin-nav-bar.component';
 import { AuthorizedUserHeaderComponent } from './components/authorized-user-header/authorized-user-header.component';
 import { AuthGuard } from './auth/auth.guard';
+import { UnauthorizedBuyTicketComponent } from './components/unauthorized-buy-ticket/unauthorized-buy-ticket.component';
+import { TicketPostService } from './services/ticket/ticket.service';
 
 const childrenUnauthorizedRoutes: Routes = [
   { path: "login", component: LoginComponent },
@@ -29,7 +31,8 @@ const childrenUnauthorizedRoutes: Routes = [
   { path: "schedule", component: ScheduleComponent },
   { path: "lines", component: LinesComponent },
   { path: "vehicleLocations", component: VehicleLocationsComponent },
-  { path: "catalog", component: CatalogComponent }
+  { path: "catalog", component: CatalogComponent },
+  { path: "buyOneTimeTicket", component: UnauthorizedBuyTicketComponent }
 ];
 
 const childrenAdminRoutes: Routes = [
@@ -64,7 +67,8 @@ const routes: Routes = [
     CatalogComponent,
     AdminComponent,
     AdminNavBarComponent,
-    AuthorizedUserHeaderComponent
+    AuthorizedUserHeaderComponent,
+    UnauthorizedBuyTicketComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +83,8 @@ const routes: Routes = [
     BaseHttpService,
     ScheduleHttpService,
     CatalogHttpService,
-    ScheduleLineHttpService
+    ScheduleLineHttpService,
+    TicketPostService
   ],
   bootstrap: [AppComponent]
 })

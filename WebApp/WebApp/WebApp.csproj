@@ -309,6 +309,22 @@
     <Compile Include="Migrations\201906031120123_changesOfDateTimeFormat.Designer.cs">
       <DependentUpon>201906031120123_changesOfDateTimeFormat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906040722367_TicketUserIdChanged.cs" />
+    <Compile Include="Migrations\201906040722367_TicketUserIdChanged.Designer.cs">
+      <DependentUpon>201906040722367_TicketUserIdChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906040859378_TicketCatalogHistoryIdUpdated.cs" />
+    <Compile Include="Migrations\201906040859378_TicketCatalogHistoryIdUpdated.Designer.cs">
+      <DependentUpon>201906040859378_TicketCatalogHistoryIdUpdated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906040906444_TicketMoreFieldsIdUpdated.cs" />
+    <Compile Include="Migrations\201906040906444_TicketMoreFieldsIdUpdated.Designer.cs">
+      <DependentUpon>201906040906444_TicketMoreFieldsIdUpdated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906040921261_TicketNoComment.cs" />
+    <Compile Include="Migrations\201906040921261_TicketNoComment.Designer.cs">
+      <DependentUpon>201906040921261_TicketNoComment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -484,6 +500,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906031120123_changesOfDateTimeFormat.resx">
       <DependentUpon>201906031120123_changesOfDateTimeFormat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906040722367_TicketUserIdChanged.resx">
+      <DependentUpon>201906040722367_TicketUserIdChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906040859378_TicketCatalogHistoryIdUpdated.resx">
+      <DependentUpon>201906040859378_TicketCatalogHistoryIdUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906040906444_TicketMoreFieldsIdUpdated.resx">
+      <DependentUpon>201906040906444_TicketMoreFieldsIdUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906040921261_TicketNoComment.resx">
+      <DependentUpon>201906040921261_TicketNoComment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

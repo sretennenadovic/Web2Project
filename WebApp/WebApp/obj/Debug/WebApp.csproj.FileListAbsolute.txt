@@ -319,3 +319,7 @@ C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.csproj.CopyCom
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.dll
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.pdb
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache
+C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.TicketUserIdChanged.resources
+C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.TicketCatalogHistoryIdUpdated.resources
+C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.TicketMoreFieldsIdUpdated.resources
+C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.TicketNoComment.resources

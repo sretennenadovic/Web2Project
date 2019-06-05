@@ -1,0 +1,54 @@
+<h2>Cenovnik</h2>
+<table>
+  <tr>
+    <td>
+<div class="container">
+	<div class="row">
+        <div class="span12">
+    		<table class="table table-condensed table-hover">
+    			<thead>
+    				<tr>
+    					<th> </th>
+    					<th *ngFor="let ticketType of values.TicketTypes">{{ticketType.Name}}</th>
+    				</tr>
+    			</thead>
+    			<tbody>
+    				<tr *ngFor="let passengerType of values.PassengerTypes">
+              <th>{{passengerType.Name}}</th>
+              <ng-container *ngFor="let ticketPrice of values.TicketPrices">
+                <td  *ngIf="passengerType.Name===ticketPrice.PassengerTypeString">{{ticketPrice.Price}}</td>
+              </ng-container>
+            </tr>				
+    			</tbody>
+    		</table>
+    	</div>
+	</div>
+</div>
+</td>
+<td>&nbsp;</td>
+<td>
+<table class="table-condensed ">
+    <tbody>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td><button class="btn btn-secondary" (click)="dodajCenovnik()">Dodaj cenovnik</button></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td><button class="btn btn-secondary" (click)="izmeniCenovnik()">Izmeni cenovnik</button></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td><button class="btn btn-secondary" (click)="obrisiRed()">Obrisi R.voznje</button></td>      
+      </tr>
+    </tbody>
+  </table>
+  </td>
+  </tr>
+  </table>

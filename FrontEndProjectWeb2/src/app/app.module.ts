@@ -25,6 +25,12 @@ import { AuthGuard } from './auth/auth.guard';
 import { UnauthorizedBuyTicketComponent } from './components/unauthorized-buy-ticket/unauthorized-buy-ticket.component';
 import { TicketPostService } from './services/ticket/ticket.service';
 import { AdminScheduleComponent } from './components/admin-schedule/admin-schedule.component';
+import { AdminAddScheduleComponent } from './components/admin-add-schedule/admin-add-schedule.component';
+import { AdminChangeScheduleComponent } from './components/admin-change-schedule/admin-change-schedule.component';
+import { AdminDeleteScheduleComponent } from './components/admin-delete-schedule/admin-delete-schedule.component';
+import { AdminCatalogComponent } from './components/admin-catalog/admin-catalog.component';
+import { AdminAddCatalogComponent } from './components/admin-add-catalog/admin-add-catalog.component';
+import { AdminChangeCatalogComponent } from './components/admin-change-catalog/admin-change-catalog.component';
 
 const childrenUnauthorizedRoutes: Routes = [
   { path: "login", component: LoginComponent },
@@ -37,7 +43,13 @@ const childrenUnauthorizedRoutes: Routes = [
 ];
 
 const childrenAdminRoutes: Routes = [
-  {path: "adminSchedule", component: AdminScheduleComponent}
+  {path: "adminSchedule", component: AdminScheduleComponent},
+  {path: "adminAddSchedule", component: AdminAddScheduleComponent},
+  {path: "adminChangeSchedule", component: AdminChangeScheduleComponent},
+  {path: "adminDeleteSchedule", component: AdminDeleteScheduleComponent},
+  {path: "adminCatalog", component: AdminCatalogComponent},
+  {path: "adminAddCatalog", component: AdminAddCatalogComponent},
+  {path: "adminChangeCatalog", component: AdminChangeCatalogComponent}
 ];
 
 const routes: Routes = [
@@ -71,7 +83,13 @@ const routes: Routes = [
     AdminNavBarComponent,
     AuthorizedUserHeaderComponent,
     UnauthorizedBuyTicketComponent,
-    AdminScheduleComponent
+    AdminScheduleComponent,
+    AdminAddScheduleComponent,
+    AdminChangeScheduleComponent,
+    AdminDeleteScheduleComponent,
+    AdminCatalogComponent,
+    AdminAddCatalogComponent,
+    AdminChangeCatalogComponent
   ],
   imports: [
     BrowserModule,

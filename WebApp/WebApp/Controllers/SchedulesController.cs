@@ -79,7 +79,7 @@ namespace WebApp.Controllers
         }
 
         // POST: api/Schedules
-        [ResponseType(typeof(Schedule))]
+        [ResponseType(typeof(bool))]
         public IHttpActionResult PostSchedule(Schedule schedule)
         {
             if (!ModelState.IsValid)
@@ -90,10 +90,15 @@ namespace WebApp.Controllers
             //ovde moram proveriti dal postoje ona 2 strana kljuca vec u tabeli ako da vratim string
             //ne moze ako ne vratim string uspesno
 
+            if(db.Schedules.Find(x => x.LineId == schedule.LineId && x.ScheduleTypeId == schedule.ScheduleTypeId).FirstOrDefault() != null)
+            {
+                return Ok(false);
+            }
+
             db.Schedules.Add(schedule);
             db.Complete();
 
-            return CreatedAtRoute("DefaultApi", new { id = schedule.Id }, schedule);
+            return Ok(true);
         }
 
         // DELETE: api/Schedules/5

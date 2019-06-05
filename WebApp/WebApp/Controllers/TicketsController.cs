@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebApp.Models;
@@ -113,6 +114,8 @@ namespace WebApp.Controllers
         [ResponseType(typeof(DateTime))]
         public IHttpActionResult PostUnauthorizedTicket(TicketUnauthorized tu)
         {
+            SendEmail("JGSP Sreten", "jgsp@mail.com", tu.mail, "Kupovina karte", $"Uspesno ste kupili kartu u {DateTime.Now}, a istice {DateTime.Now.AddHours(1)}");
+
             string s = tu.mail;
             Ticket ticket = new Ticket();
             ticket.IsValid = true;
@@ -126,6 +129,32 @@ namespace WebApp.Controllers
             db.Complete();
 
             return Ok(ticket.TimeIssued);
+        }
+
+        private void SendEmail(string sendername, string sender, string recipient, string subject, string body)
+        {
+            SmtpClient smtpClient = new SmtpClient("smtp.mailtrap.io", 2525)
+            {
+                Credentials = new System.Net.NetworkCredential()
+                {
+                    UserName = "c84922d535ae2f",
+                    Password = "60943990394f6d"
+                },
+
+                EnableSsl = true
+            };
+
+            MailAddress from = new MailAddress(sender, sendername);
+            MailAddress to = new MailAddress(recipient, "");
+            MailMessage mailMessage = new MailMessage(from, to)
+            {
+                Subject = subject,
+                Body = body
+            };
+
+
+
+            smtpClient.Send(mailMessage);
         }
 
 

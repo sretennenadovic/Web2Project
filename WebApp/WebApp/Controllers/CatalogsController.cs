@@ -144,6 +144,19 @@ namespace WebApp.Controllers
             return discount * cHistory;
         }
 
+
+        [Route("api/Catalogs/GetAdminCatalogInfo")]
+        [ResponseType(typeof(CatalogAdminInfo))]
+        public IHttpActionResult GetAdminCatalogInfo()
+        {
+            CatalogAdminInfo cai = new CatalogAdminInfo();
+            cai.Catalog = db.Catalogs.Find(x => x.ValidFrom < DateTime.Now && x.ValidTo > DateTime.Now).FirstOrDefault();
+            cai.TicketTypes = db.TicketTypes.GetAll();
+            cai.CatalogHistory = db.CatalogHistories.Find(x => x.CatalogId == cai.Catalog.Id).ToList();
+
+            return Ok(cai);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

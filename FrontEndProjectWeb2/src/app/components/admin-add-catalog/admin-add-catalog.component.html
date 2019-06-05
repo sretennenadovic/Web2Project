@@ -1,0 +1,53 @@
+Datum od:
+<input type="date" [(ngModel)]="dateFrom">
+Datum do:
+<input type="date" [(ngModel)]="dateTo">
+
+<table>
+  <tr>
+    <td>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Cena</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ticketType of values.TicketTypes">
+      <td>{{ticketType.Name}}</td>
+      <ng-container *ngFor="let price of values.CatalogHistory">
+          <td *ngIf="price.TicketTypeId == ticketType.Id">{{price.TicketPrice}}</td>
+      </ng-container>
+    </tr>
+  </tbody>
+</table>
+</td>
+<td>
+<table>
+  <thead>
+    <tr>
+      <th>
+        Nova cena
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><input [(ngModel)]="novaCenaVremenska"/></td>
+    </tr>
+    <tr>
+      <td><input [(ngModel)]="novaCenaDnevna"/></td>
+    </tr>
+    <tr>
+      <td><input [(ngModel)]="novaCenaMesecna"/></td>
+    </tr>
+    <tr>
+      <td><input [(ngModel)]="novaCenaGodisnja"/></td>
+    </tr>
+  </tbody>
+</table>
+</td>
+</tr></table>
+
+<button>Dodaj cenovnik</button>

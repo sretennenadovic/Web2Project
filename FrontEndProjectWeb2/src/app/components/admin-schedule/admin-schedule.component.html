@@ -13,7 +13,7 @@
       <td>&nbsp;</td>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
-      <td><button class="btn btn-secondary">Dodaj R.voznje</button></td>
+      <td><button class="btn btn-secondary" (click)="dodajRed()">Dodaj R.voznje</button></td>
     </tr>
     <tr>
       <td>Vrsta reda voznje:</td>
@@ -25,7 +25,7 @@
       <td>&nbsp;</td>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
-      <td><button class="btn btn-secondary">Izmeni R.voznje</button></td>
+      <td><button class="btn btn-secondary" (click)="izmeniRed()">Izmeni R.voznje</button></td>
     </tr>
     <tr>
       <td>Linije:</td>
@@ -39,7 +39,7 @@
       <td>&nbsp;</td>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
-      <td><button class="btn btn-secondary">Obrisi R.voznje</button></td>      
+      <td><button class="btn btn-secondary" (click)="obrisiRed()">Obrisi R.voznje</button></td>      
     </tr>
     <tr>
       <td><button (click)="changeOfLine()" class="btn btn-secondary">Red voznje</button></td>
@@ -50,5 +50,5 @@
 </div>
 </div>
 
-<p>Rezultat pretrage:</p>
+Rezultat pretrage:
 <div>{{schedule.Departure}}</div>

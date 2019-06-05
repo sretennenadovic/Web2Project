@@ -1,16 +1,8 @@
 <div class="container">
     <div class="row">
           <div class="span12">
-<table class="table table-condensed table-hover">
+<table class="table table-condensed ">
   <tbody>
-    <tr>
-      <td>Vrsta linije:</td>
-      <td><select class="sirina" [(ngModel)]="selectedLineType" (change)="changeOfLineType()">
-          <option *ngFor="let lineType of values.LineTypes" [ngValue]="lineType">
-            {{lineType.Name}}
-          </option>
-      </select></td>
-    </tr>
     <tr>
       <td>Vrsta reda voznje:</td>
       <td><select class="sirina" [(ngModel)]="selectedScheduleType">
@@ -23,20 +15,22 @@
       <td>Linije:</td>
       <td><select class="sirina" [(ngModel)]="selectedL">
         <ng-container *ngFor="let line of values.Lines">
-          <option *ngIf="selectedLineType.Id===line.LineTypeId" [ngValue]="line">
+          <option [ngValue]="line">
             {{line.Name}}
           </option>
           </ng-container>
-      </select></td>
+      </select></td>    
+    </tr>
+    <tr >
+      <td colspan="2">
+        <input required [(ngModel)]="inputSchedule"/>
+      </td>
     </tr>
     <tr>
-      <td><button (click)="changeOfLine()" class="btn btn-secondary">Red voznje</button></td>
+      <td><button (click)="addSchedule()" class="btn btn-secondary">Dodaj R.voznje</button></td>
     </tr>
   </tbody>
 </table>
 </div>
 </div>
 </div>
-
-Rezultat pretrage:
-<div>{{schedule.Departure}}</div>

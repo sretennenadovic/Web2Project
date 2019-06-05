@@ -5,6 +5,7 @@ import { LineType } from 'src/app/models/LineType';
 import { ScheduleHttpService, ScheduleLineHttpService } from 'src/app/services/schedule/schedule.service';
 import { Line } from 'src/app/models/Line';
 import { Schedule } from 'src/app/models/Schedule';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-schedule',
@@ -19,7 +20,7 @@ export class AdminScheduleComponent implements OnInit {
   selectedL:Line = new Line();
   schedule: Schedule = new Schedule();
 
-  constructor(private http: ScheduleHttpService, private sheduleLineService:ScheduleLineHttpService) { }
+  constructor(private http: ScheduleHttpService, private sheduleLineService:ScheduleLineHttpService,private router:Router) { }
 
   ngOnInit() {
     this.http.getSpecific().subscribe(
@@ -50,5 +51,17 @@ export class AdminScheduleComponent implements OnInit {
         err => console.log(err)
       );            
     }
+  }
+
+  dodajRed(){
+    this.router.navigate(['admin','adminAddSchedule']);
+  }
+
+  izmeniRed(){
+    this.router.navigate(['admin','adminChangeSchedule'])
+  }
+
+  obrisiRed(){
+    this.router.navigate(['admin','adminDeleteSchedule'])
   }
 }

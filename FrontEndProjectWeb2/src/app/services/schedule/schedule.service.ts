@@ -13,3 +13,22 @@ export class ScheduleLineHttpService extends BaseHttpService<Schedule> {
   specificUrl = "/api/Schedules/GetScheduleForSelectedLine";
 }
 
+@Injectable()
+export class SchedulePostHttpService extends BaseHttpService<Schedule> {
+  specificUrl = "/api/Schedules";
+}
+
+@Injectable()
+export class ScheduleGetAllHttpService extends BaseHttpService<Schedule> {
+  specificUrl = "/api/Schedules";
+}
+
+@Injectable()
+export class SchedulePutHttpService extends BaseHttpService<Schedule> {
+  specificUrl = "/api/Schedules";
+}
+
+@Injectable()
+export class ScheduleDeleteHttpService extends BaseHttpService<Schedule> {
+  specificUrl = "/api/Schedules";
+}

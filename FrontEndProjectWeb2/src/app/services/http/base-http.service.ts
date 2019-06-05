@@ -23,6 +23,14 @@ export class BaseHttpService<T> {
     return this.http.post<any>(this.baseUrl + this.specificUrl, data, options);
   }
 
+  put(data:any, id:number):Observable<any>{
+    return this.http.put(this.baseUrl + this.specificUrl + `/${id}`,data);
+  }
+
+  delete(id:number):Observable<any>{
+    return this.http.delete(this.baseUrl + this.specificUrl + `/${id}`);
+  }
+
   postOneTimeTicket(tu:TicketUnauthorized, options?:any):Observable<any>{
     return this.http.post<any>(this.baseUrl + this.specificUrl, tu, options);
   }

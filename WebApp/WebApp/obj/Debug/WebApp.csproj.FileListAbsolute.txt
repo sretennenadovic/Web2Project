@@ -157,7 +157,6 @@ C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migration
 C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migrations.UpdatedUserAndTicketMigration.resources
 C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migrations.RestModelMigration.resources
 C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migrations.CorrectionMigration1.resources
-C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\bin\WebApp.dll.config
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\bin\WebApp.dll
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\bin\WebApp.pdb
@@ -323,3 +322,8 @@ C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.Tic
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.TicketCatalogHistoryIdUpdated.resources
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.TicketMoreFieldsIdUpdated.resources
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.TicketNoComment.resources
+C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migrations.changesOfDateTimeFormat.resources
+C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migrations.TicketUserIdChanged.resources
+C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migrations.TicketCatalogHistoryIdUpdated.resources
+C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migrations.TicketMoreFieldsIdUpdated.resources
+C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migrations.TicketNoComment.resources

@@ -1,4 +1,8 @@
-.btn-black{
-    background-color: #000 !important;
-    color: #fff;
+.btn-black {
+  background-color: #000 !important;
+  color: #fff;
+}
+
+.navbar {
+  background-color: lightgrey !important;
 }

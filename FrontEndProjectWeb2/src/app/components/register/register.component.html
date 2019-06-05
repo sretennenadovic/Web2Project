@@ -1,9 +1,122 @@
 <div class="sidenav">
   <div class="login-main-text">
-     <h2>JGSP<br> Stranica za prijavu</h2>
-     <p>Prijavi se ili se registruj da bi koristio nase usluge.</p>
+    <h2>
+      JGSP<br />
+      Stranica za registraciju
+    </h2>
+    <p>Prijavi se ili se registruj da bi koristio nase usluge.</p>
   </div>
 </div>
-<p>
-  register works!
-</p>
+<div class="main">
+  <div class="col-md-8 col-sm-10">
+    <div class="profile-form">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">E-mail adresa</label>
+          <div class="col-sm-6">
+            <div class="md-form mt-0">
+              <input
+                type="text"
+                formControlName="username"
+                required
+                class="form-control"
+                placeholder="E-mail adresa"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Lozinka</label>
+          <div class="col-sm-6">
+            <div class="md-form mt-0">
+              <input
+                type="text"
+                formControlName="password"
+                required
+                class="form-control"
+                placeholder="Lozinka"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Potvrdi lozinku</label>
+          <div class="col-sm-6">
+            <div class="md-form mt-0">
+              <input
+                type="text"
+                formControlName="ConfirmPassword"
+                required
+                class="form-control"
+                placeholder="Lozinka"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Ime</label>
+          <div class="col-sm-6">
+            <div class="md-form mt-0">
+              <input
+                type="text"
+                formControlName="FirstName"
+                required
+                class="form-control"
+                placeholder="Ime"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Prezime</label>
+          <div class="col-sm-6">
+            <div class="md-form mt-0">
+              <input
+                type="text"
+                formControlName="LastName"
+                required
+                class="form-control"
+                placeholder="Prezime"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Datum rodjenja</label>
+          <div class="col-sm-6">
+            <div class="md-form mt-0">
+              <input
+                type="text"
+                formControlName="BirthDate"
+                required
+                class="form-control"
+                placeholder="Datum rodjenja"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Adresa</label>
+          <div class="col-sm-6">
+            <div class="md-form mt-0">
+              <input
+                type="text"
+                formControlName="Address"
+                required
+                class="form-control"
+                placeholder="Adresa"
+              />
+            </div>
+          </div>
+        </div>
+
+        <button (click)="moveToRegisterComponent()" class="btn btn-black">
+          Registruj se
+        </button>
+        <button class="btn btn-secondary">
+          Prijavi se
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

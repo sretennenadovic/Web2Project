@@ -13,9 +13,8 @@ namespace WebApp.Models
         [Required]
         [Column(TypeName ="datetime2")]
         public DateTime ValidFrom { get; set; }
-        [Required]
         [Column(TypeName = "datetime2")]
-        public DateTime ValidTo { get; set; }
+        public DateTime? ValidTo { get; set; }
         public List<CatalogHistory> CatalogHistories { get; set; }
 
     }

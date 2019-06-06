@@ -30,7 +30,7 @@ import { AdminChangeScheduleComponent } from './components/admin-change-schedule
 import { AdminDeleteScheduleComponent } from './components/admin-delete-schedule/admin-delete-schedule.component';
 import { AdminCatalogComponent } from './components/admin-catalog/admin-catalog.component';
 import { AdminAddCatalogComponent } from './components/admin-add-catalog/admin-add-catalog.component';
-import { AdminChangeCatalogComponent } from './components/admin-change-catalog/admin-change-catalog.component';
+import { AdminCatalogViewComponent } from './components/admin-catalog-view/admin-catalog-view.component';
 
 const childrenUnauthorizedRoutes: Routes = [
   { path: "login", component: LoginComponent },
@@ -48,8 +48,8 @@ const childrenAdminRoutes: Routes = [
   {path: "adminChangeSchedule", component: AdminChangeScheduleComponent},
   {path: "adminDeleteSchedule", component: AdminDeleteScheduleComponent},
   {path: "adminCatalog", component: AdminCatalogComponent},
-  {path: "adminAddCatalog", component: AdminAddCatalogComponent},
-  {path: "adminChangeCatalog", component: AdminChangeCatalogComponent}
+  {path: "adminCatalogView/:id", component: AdminCatalogViewComponent},
+  {path: "adminAddCatalog", component: AdminAddCatalogComponent}
 ];
 
 const routes: Routes = [
@@ -89,7 +89,7 @@ const routes: Routes = [
     AdminDeleteScheduleComponent,
     AdminCatalogComponent,
     AdminAddCatalogComponent,
-    AdminChangeCatalogComponent
+    AdminCatalogViewComponent
   ],
   imports: [
     BrowserModule,

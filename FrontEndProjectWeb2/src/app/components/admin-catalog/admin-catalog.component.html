@@ -1,54 +1,6 @@
-<h2>Cenovnik</h2>
-<table>
-  <tr>
-    <td>
-<div class="container">
-	<div class="row">
-        <div class="span12">
-    		<table class="table table-condensed table-hover">
-    			<thead>
-    				<tr>
-    					<th> </th>
-    					<th *ngFor="let ticketType of values.TicketTypes">{{ticketType.Name}}</th>
-    				</tr>
-    			</thead>
-    			<tbody>
-    				<tr *ngFor="let passengerType of values.PassengerTypes">
-              <th>{{passengerType.Name}}</th>
-              <ng-container *ngFor="let ticketPrice of values.TicketPrices">
-                <td  *ngIf="passengerType.Name===ticketPrice.PassengerTypeString">{{ticketPrice.Price}}</td>
-              </ng-container>
-            </tr>				
-    			</tbody>
-    		</table>
-    	</div>
-	</div>
-</div>
-</td>
-<td>&nbsp;</td>
-<td>
-<table class="table-condensed ">
-    <tbody>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td><button class="btn btn-secondary" (click)="dodajCenovnik()">Dodaj cenovnik</button></td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td><button class="btn btn-secondary" (click)="izmeniCenovnik()">Izmeni cenovnik</button></td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td><button class="btn btn-secondary" (click)="obrisiRed()">Obrisi R.voznje</button></td>      
-      </tr>
-    </tbody>
-  </table>
-  </td>
-  </tr>
-  </table>
+<button class="btn btn-secondary" (click)="addCatalog()">Dodaj cenovnik</button>
+<h2>Cenovnici</h2>
+
+<ul *ngFor="let catalog of values">
+  <li (click) = "selectedCatalog(catalog)">Cenovnik id:{{catalog.Id}} vazi od {{catalog.ValidFrom}}, vazi <label *ngIf="catalog.ValidTo!=null">do: </label> {{catalog.ValidTo}}<label *ngIf="catalog.ValidTo==null">jos uvek</label></li> 
+</ul>

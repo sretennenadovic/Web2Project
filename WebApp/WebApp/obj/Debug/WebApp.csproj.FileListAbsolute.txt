@@ -327,3 +327,7 @@ C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migration
 C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migrations.TicketCatalogHistoryIdUpdated.resources
 C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migrations.TicketMoreFieldsIdUpdated.resources
 C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migrations.TicketNoComment.resources
+C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.CatalogUpdateMigration.resources
+C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.CatalogUpdateMigrationAgain.resources
+C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.CatalogUpdateMigrationAgainAgain.resources
+C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.UpdatedAppUser.resources

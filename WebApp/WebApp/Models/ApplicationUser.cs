@@ -29,10 +29,7 @@ namespace WebApp.Models
         public string Address { get; set; }
         [Required]
         public bool Approved { get; set; }
-        [Required]
         public string ImageUrl { get; set; }
-        [Required]
-        [StringLength(30)]
         public string VerificationStatus { get; set; }
         public int? PassengerTypeId { get; set; }
         public PassengerType PassengerType { get; set; }

@@ -109,6 +109,7 @@ namespace WebApp.Controllers
             return Ok(catalog);
         }
 
+        
         [Route("api/Catalogs/GetCatalogInfo")]
         [ResponseType(typeof(CatalogInfo))]
         public IHttpActionResult GetCatalogInfo()
@@ -132,11 +133,10 @@ namespace WebApp.Controllers
 
             return Ok(ci);
         }
-
         //racunanje cene karte za odredjen tip karte, odredjenog korisnika po zadnjem cenovniku
         private float getPrice(int id1, int id2)
         {         
-            int catalog = db.Catalogs.Find(x => x.ValidFrom < DateTime.Now && x.ValidTo > DateTime.Now).FirstOrDefault().Id;
+            int catalog = db.Catalogs.Find(x => x.ValidFrom < DateTime.Now && x.ValidTo == null).FirstOrDefault().Id;
 
             float cHistory = db.CatalogHistories.Find(x => x.TicketTypeId == id1 && x.CatalogId == catalog).FirstOrDefault().TicketPrice;
             float discount = db.PassengerTypes.Find(x => x.Id == id2).FirstOrDefault().Discount;
@@ -150,11 +150,73 @@ namespace WebApp.Controllers
         public IHttpActionResult GetAdminCatalogInfo()
         {
             CatalogAdminInfo cai = new CatalogAdminInfo();
-            cai.Catalog = db.Catalogs.Find(x => x.ValidFrom < DateTime.Now && x.ValidTo > DateTime.Now).FirstOrDefault();
+            cai.Catalog = db.Catalogs.Find(x => x.ValidFrom < DateTime.Now && x.ValidTo == null).FirstOrDefault();
             cai.TicketTypes = db.TicketTypes.GetAll();
             cai.CatalogHistory = db.CatalogHistories.Find(x => x.CatalogId == cai.Catalog.Id).ToList();
 
             return Ok(cai);
+        }
+
+        //dobavi za admina odredjen ali ne katalog vec sire od toga zato ovaj info
+        [Route("api/Catalogs/GetSpecificOne/{id}")]
+        [ResponseType(typeof(CatalogInfo))]
+        public IHttpActionResult GetSpecificOne(int id)
+        {
+            CatalogInfo ci = new CatalogInfo();
+            ci.PassengerTypes = db.PassengerTypes.GetAll();
+            ci.TicketTypes = db.TicketTypes.GetAll();
+
+            List<TicketPrices> tp = new List<TicketPrices>();
+            float price = 0;
+            foreach (var item in ci.TicketTypes)
+            {
+                foreach (var item2 in ci.PassengerTypes)
+                {
+                    price = getPriceForSpecificOne(id,item.Id, item2.Id);
+                    tp.Add(new TicketPrices() { TicketName = item.Name, PassengerTypeString = item2.Name, Price = price });
+                }
+            }
+
+            ci.TicketPrices = tp;
+
+            return Ok(ci);
+        }
+
+        private float getPriceForSpecificOne(int id, int id1, int id2)
+        {
+            float cHistory = db.CatalogHistories.Find(x => x.TicketTypeId == id1 && x.CatalogId == id).FirstOrDefault().TicketPrice;
+            float discount = db.PassengerTypes.Find(x => x.Id == id2).FirstOrDefault().Discount;
+
+            return discount * cHistory;
+        }
+
+        //prvo moramo dodati katalog, ali pre toga update stari, pa onda katalog history 4 puta za 4 vrste karata
+        [Route("api/Catalogs/PostNewOne")]
+        [ResponseType(typeof(bool))]
+        public IHttpActionResult PostNewOne(NewCatalog catalog)
+        {   
+            Catalog oldCatalog = db.Catalogs.Find(x => x.ValidTo == null).FirstOrDefault();
+            oldCatalog.ValidTo = catalog.validFrom;
+            db.Catalogs.Update(oldCatalog);
+
+            db.Catalogs.Add(new Catalog() { ValidFrom=catalog.validFrom});
+            db.Complete();
+
+            int newCatalogId = db.Catalogs.Find(x => x.ValidFrom == catalog.validFrom).FirstOrDefault().Id;
+
+            for (int i = 0; i < db.TicketTypes.GetAll().Count(); i++)
+            {
+                db.CatalogHistories.Add(new CatalogHistory()
+                {
+                    CatalogId = newCatalogId,
+                    TicketPrice = catalog.TicketPrices[i].TicketPrice,
+                    TicketTypeId = catalog.TicketPrices[i].TicketTypeId
+                });
+            }
+           
+            db.Complete();
+
+            return Ok(true);
         }
 
         protected override void Dispose(bool disposing)

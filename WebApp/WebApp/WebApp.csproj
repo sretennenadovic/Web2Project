@@ -325,12 +325,29 @@
     <Compile Include="Migrations\201906040921261_TicketNoComment.Designer.cs">
       <DependentUpon>201906040921261_TicketNoComment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906060922500_CatalogUpdateMigration.cs" />
+    <Compile Include="Migrations\201906060922500_CatalogUpdateMigration.Designer.cs">
+      <DependentUpon>201906060922500_CatalogUpdateMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906060926199_CatalogUpdateMigrationAgain.cs" />
+    <Compile Include="Migrations\201906060926199_CatalogUpdateMigrationAgain.Designer.cs">
+      <DependentUpon>201906060926199_CatalogUpdateMigrationAgain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906060928376_CatalogUpdateMigrationAgainAgain.cs" />
+    <Compile Include="Migrations\201906060928376_CatalogUpdateMigrationAgainAgain.Designer.cs">
+      <DependentUpon>201906060928376_CatalogUpdateMigrationAgainAgain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906061611251_UpdatedAppUser.cs" />
+    <Compile Include="Migrations\201906061611251_UpdatedAppUser.Designer.cs">
+      <DependentUpon>201906061611251_UpdatedAppUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\BindingModels\CatalogAdminInfo.cs" />
     <Compile Include="Models\BindingModels\CatalogInfo.cs" />
+    <Compile Include="Models\BindingModels\NewCatalog.cs" />
     <Compile Include="Models\BindingModels\ScheduleInfo.cs" />
     <Compile Include="Models\BindingModels\TicketPrices.cs" />
     <Compile Include="Models\BindingModels\TicketUnauthorized.cs" />
@@ -514,6 +531,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906040921261_TicketNoComment.resx">
       <DependentUpon>201906040921261_TicketNoComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906060922500_CatalogUpdateMigration.resx">
+      <DependentUpon>201906060922500_CatalogUpdateMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906060926199_CatalogUpdateMigrationAgain.resx">
+      <DependentUpon>201906060926199_CatalogUpdateMigrationAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906060928376_CatalogUpdateMigrationAgainAgain.resx">
+      <DependentUpon>201906060928376_CatalogUpdateMigrationAgainAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906061611251_UpdatedAppUser.resx">
+      <DependentUpon>201906061611251_UpdatedAppUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

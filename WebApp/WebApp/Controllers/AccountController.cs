@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -328,17 +329,98 @@ namespace WebApp.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            int UserTypeId;
+            if(model.PassengerType == "Regularan")
+            {
+                UserTypeId = 3;
+            }else if(model.PassengerType == "Penzioner")
+            {
+                UserTypeId = 2;
+            }
+            else
+            {
+                UserTypeId = 1;
+            }
+
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Address = model.Address, BirthDate = model.BirthDate, Approved = false, PassengerTypeId = UserTypeId };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+
 
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
             }
 
+
+            result = await UserManager.AddToRoleAsync(user.Id, "AppUser");
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+
             return Ok();
         }
+
+        //upload slike
+    /*    [Route("api/Account/PostUplaodImage")]
+        [AllowAnonymous]
+        public IHttpActionResult PostUploadImage(string id)
+        {
+            var httpRequest = HttpContext.Current.Request;
+
+            try
+            {
+                if (httpRequest.Files.Count > 0)
+                {
+                    foreach (string file in httpRequest.Files)
+                    {
+
+                       // Passenger passenger = UnitOfWork.PassengerRepository.Get(id);
+
+                        if (passenger == null)
+                        {
+                            return BadRequest("User does not exists.");
+                        }
+
+                        if (passenger.ImageUrl != null)
+                        {
+                            File.Delete(HttpContext.Current.Server.MapPath("~/UploadUserImages/" + passenger.ImageUrl));
+                        }
+
+
+
+                        var postedFile = httpRequest.Files[file];
+                        string fileName = id + "_" + postedFile.FileName;
+                        var filePath = HttpContext.Current.Server.MapPath("~/UploadFile/" + fileName);
+
+
+
+
+                        passenger.ImageUrl = fileName;
+                        passenger.Type = "Regular";
+                        UnitOfWork.PassengerRepository.Update(passenger);
+                        UnitOfWork.Complete();
+
+
+                        postedFile.SaveAs(filePath);
+                    }
+
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
+
+        }*/
 
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]

@@ -43,17 +43,17 @@ namespace WebApp.Controllers
         }
 
         // PUT: api/Stations/5
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(bool))]
         public IHttpActionResult PutStation(int id, Station station)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return Ok(false);
             }
 
             if (id != station.Id)
             {
-                return BadRequest();
+                return Ok(false);
             }
 
             db.Stations.Update(station);
@@ -66,7 +66,7 @@ namespace WebApp.Controllers
             {
                 if (!StationExists(id))
                 {
-                    return NotFound();
+                    return Ok(false);
                 }
                 else
                 {
@@ -74,38 +74,38 @@ namespace WebApp.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(true);
         }
 
         // POST: api/Stations
-        [ResponseType(typeof(Station))]
+        [ResponseType(typeof(bool))]
         public IHttpActionResult PostStation(Station station)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return Ok(false);
             }
 
             db.Stations.Add(station);
             db.Complete();
 
-            return CreatedAtRoute("DefaultApi", new { id = station.Id }, station);
+            return Ok(true);
         }
 
         // DELETE: api/Stations/5
-        [ResponseType(typeof(Station))]
+        [ResponseType(typeof(bool))]
         public IHttpActionResult DeleteStation(int id)
         {
             Station station = db.Stations.Get(id);
             if (station == null)
             {
-                return NotFound();
+                return Ok(false);
             }
 
             db.Stations.Remove(station);
             db.Complete();
 
-            return Ok(station);
+            return Ok(true);
         }
 
         protected override void Dispose(bool disposing)

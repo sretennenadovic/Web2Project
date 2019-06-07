@@ -41,6 +41,12 @@ export class AuthService {
         if(role === "Admin"){
           observer.next('admin');
           observer.complete();
+        }else if(role === "Controller"){
+          observer.next('kontrolor');
+          observer.complete();
+        }else if(role === "AppUser"){
+          observer.next('putnik');
+          observer.complete();
         }
 
       }, err => {observer.next('greska');

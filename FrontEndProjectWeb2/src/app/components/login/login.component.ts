@@ -36,9 +36,9 @@ export class LoginComponent implements OnInit {
       if(data === 'admin'){
         this.router.navigate(['admin'])
       }else if(data === 'kontrolor'){
-        //this.router.navigate(['kontrolor'])
+        this.router.navigate(['controllor'])
       }else if(data === 'putnik'){
-        //this.router.navigate(['putnik'])
+        this.router.navigate(['passenger'])
       }else if(data === 'greska'){
         alert("Nevalidni username ili password");
       }

@@ -31,6 +31,17 @@ import { AdminDeleteScheduleComponent } from './components/admin-delete-schedule
 import { AdminCatalogComponent } from './components/admin-catalog/admin-catalog.component';
 import { AdminAddCatalogComponent } from './components/admin-add-catalog/admin-add-catalog.component';
 import { AdminCatalogViewComponent } from './components/admin-catalog-view/admin-catalog-view.component';
+import { ControlorComponent } from './components/controlor/controlor.component';
+import { PassengerComponent } from './components/passenger/passenger.component';
+import { AuthGuardContorllor } from './auth/authControllor.guard';
+import { AuthGuardPassenger } from './auth/authPassenger.guard';
+import { AdminStationsComponent } from './components/admin-stations/admin-stations.component';
+
+import { AgmCoreModule } from '@agm/core';
+import { StationHttpService } from './services/station/station.service';
+import { ChangeStationComponent } from './components/change-station/change-station.component';
+import { DeleteStationComponent } from './components/delete-station/delete-station.component';
+
 
 const childrenUnauthorizedRoutes: Routes = [
   { path: "login", component: LoginComponent },
@@ -49,7 +60,10 @@ const childrenAdminRoutes: Routes = [
   {path: "adminDeleteSchedule", component: AdminDeleteScheduleComponent},
   {path: "adminCatalog", component: AdminCatalogComponent},
   {path: "adminCatalogView/:id", component: AdminCatalogViewComponent},
-  {path: "adminAddCatalog", component: AdminAddCatalogComponent}
+  {path: "adminAddCatalog", component: AdminAddCatalogComponent},
+  {path: "stations", component: AdminStationsComponent},
+  {path: "changeStation", component: ChangeStationComponent},
+  {path: "deleteStation", component: DeleteStationComponent}
 ];
 
 const routes: Routes = [
@@ -64,6 +78,16 @@ const routes: Routes = [
     component: AdminComponent,
     canActivate: [AuthGuard],
     children: childrenAdminRoutes
+  },
+  {
+    path: "controllor",
+    component: ControlorComponent,
+    canActivate: [AuthGuardContorllor]
+  },
+  {
+    path: "passenger",
+    component: ControlorComponent,
+    canActivate: [AuthGuardPassenger]
   }
 ];
 
@@ -89,14 +113,20 @@ const routes: Routes = [
     AdminDeleteScheduleComponent,
     AdminCatalogComponent,
     AdminAddCatalogComponent,
-    AdminCatalogViewComponent
+    AdminCatalogViewComponent,
+    ControlorComponent,
+    PassengerComponent,
+    AdminStationsComponent,
+    ChangeStationComponent,
+    DeleteStationComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({apiKey: 'AIzaSyDnihJyw_34z5S1KZXp90pfTGAqhFszNJk'})
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
@@ -105,7 +135,8 @@ const routes: Routes = [
     ScheduleHttpService,
     CatalogHttpService,
     ScheduleLineHttpService,
-    TicketPostService
+    TicketPostService,
+    StationHttpService
   ],
   bootstrap: [AppComponent]
 })

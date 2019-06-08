@@ -41,6 +41,7 @@ import { AgmCoreModule } from '@agm/core';
 import { StationHttpService } from './services/station/station.service';
 import { ChangeStationComponent } from './components/change-station/change-station.component';
 import { DeleteStationComponent } from './components/delete-station/delete-station.component';
+import { LineHttpService } from './services/lines/line.service';
 
 
 const childrenUnauthorizedRoutes: Routes = [
@@ -63,7 +64,8 @@ const childrenAdminRoutes: Routes = [
   {path: "adminAddCatalog", component: AdminAddCatalogComponent},
   {path: "stations", component: AdminStationsComponent},
   {path: "changeStation", component: ChangeStationComponent},
-  {path: "deleteStation", component: DeleteStationComponent}
+  {path: "deleteStation", component: DeleteStationComponent},
+  {path: "lines", component: LinesComponent}
 ];
 
 const routes: Routes = [
@@ -136,7 +138,8 @@ const routes: Routes = [
     CatalogHttpService,
     ScheduleLineHttpService,
     TicketPostService,
-    StationHttpService
+    StationHttpService,
+    LineHttpService
   ],
   bootstrap: [AppComponent]
 })

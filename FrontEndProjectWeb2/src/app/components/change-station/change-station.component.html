@@ -15,6 +15,13 @@
           <span>
             Adresa: {{station.Address}}
           </span>
+          <br/>
+          <span>
+            Linije:
+            <ng-container *ngFor="let linesStation of station.Lines">
+            {{linesStation.Number}}
+            </ng-container>
+          </span>
         </agm-info-window>
   
       </agm-marker>

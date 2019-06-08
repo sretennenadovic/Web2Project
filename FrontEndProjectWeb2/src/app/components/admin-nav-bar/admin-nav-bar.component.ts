@@ -25,4 +25,8 @@ export class AdminNavBarComponent implements OnInit {
     this.router.navigate(['admin','stations'])
   }
 
+  lines(){
+    this.router.navigate(['admin','lines'])
+  }
+
 }

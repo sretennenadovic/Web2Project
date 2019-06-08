@@ -12,5 +12,10 @@ namespace WebApp.Persistence.Repository
         public StationRepository(DbContext context) : base(context)
         {
         }
+        public new IEnumerable<Station> GetAll()
+        {
+            return context.Set<Station>().Include("Lines").ToList();
+        }
+
     }
 }

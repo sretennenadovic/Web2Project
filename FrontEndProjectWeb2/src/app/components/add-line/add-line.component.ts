@@ -49,10 +49,12 @@ export class AddLineComponent implements OnInit {
     })
 
     this.newLine.Stations = [];
+    this.newLine.Order = '';
   }
 
   selectedStation(station:Station){
     this.newLine.Stations.push(station);
+    this.newLine.Order += station.Id + ',';
     this.polyline.addLocation(new GeoLocation(station.Latitude, station.Longitude))
     console.log(this.polyline)
   }

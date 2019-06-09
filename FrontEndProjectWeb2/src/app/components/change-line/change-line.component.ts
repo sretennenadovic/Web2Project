@@ -74,10 +74,23 @@ export class ChangeLineComponent implements OnInit {
     this.changeLineForm.patchValue({'name':this.selectedLine.Name,'number':this.selectedLine.Number,
                                     'type':linetype})
 
+    let splited = this.selectedLine.Order.split(',');
+    let len = splited.length - 1
+    let orderNum = [];
+    for(let num = 0; num < len ;num++){
+      let numberr = +splited[num]
+      orderNum.push(numberr)
+    }
+
+
     this.polyline = new Polyline([], 'blue', { url:"assets/busicon.png", scaledSize: {width: 50, height: 50}});
-    for(let point of this.selectedLine.Stations){
-      this.polyline.addLocation(new GeoLocation(point.Latitude,point.Longitude))
-    }  
+    for(let ord of orderNum){
+      for(let point of this.selectedLine.Stations){
+        if(point.Id == ord){
+          this.polyline.addLocation(new GeoLocation(point.Latitude,point.Longitude))
+        }
+      }  
+    }
 
     this.lineChanged.Stations = this.selectedLine.Stations
                                 
@@ -93,10 +106,12 @@ export class ChangeLineComponent implements OnInit {
   changeStations(){
     this.polyline = new Polyline([], 'blue', { url:"assets/busicon.png", scaledSize: {width: 50, height: 50}});
     this.lineChanged.Stations = [];
+    this.lineChanged.Order = '';
   }
 
   selectedStation(station:Station){
     this.lineChanged.Stations.push(station);
+    this.lineChanged.Order += station.Id + ',';
     this.polyline.addLocation(new GeoLocation(station.Latitude, station.Longitude))
   }
 

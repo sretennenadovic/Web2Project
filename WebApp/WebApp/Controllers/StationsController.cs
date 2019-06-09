@@ -56,7 +56,13 @@ namespace WebApp.Controllers
                 return Ok(false);
             }
 
-            db.Stations.Update(station);
+            var s = db.Stations.Get(id);
+            s.Address = station.Address;
+            s.Latitude = station.Latitude;
+            s.Longitude = station.Longitude;
+            s.Name = station.Name;
+
+            db.Stations.Update(s);
 
             try
             {

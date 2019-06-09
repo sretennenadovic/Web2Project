@@ -1,35 +1,29 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Station } from 'src/app/models/station';
-import { StationHttpService } from 'src/app/services/station/station.service';
-import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Polyline } from 'src/app/models/map/polyline';
 import { Line } from 'src/app/models/Line';
+import { Polyline } from 'src/app/models/map/polyline';
+import { StationHttpService } from 'src/app/services/station/station.service';
 import { LineHttpService } from 'src/app/services/lines/line.service';
 import { GeoLocation } from 'src/app/models/map/geolocations';
 
 @Component({
-  selector: 'app-lines',
-  templateUrl: './lines.component.html',
-  styleUrls: ['./lines.component.css'],
+  selector: 'app-delete-line',
+  templateUrl: './delete-line.component.html',
+  styleUrls: ['./delete-line.component.css'],
   styles: ['agm-map {height: 450px; width: 650px;}']
 })
-export class LinesComponent implements OnInit {
+export class DeleteLineComponent implements OnInit {
 
   stations: Array<Station> = [];
   lines: Array<Line> = [];
   sortedLines: Array<Line> = [];
-  public polylines: Polyline[];
-  polyline: Polyline = new Polyline([], 'blue', { url:"assets/busicon.png", scaledSize: {width: 50, height: 50}});
+  polyline: Polyline = new Polyline([], 'black', { url:"assets/busicon.png", scaledSize: {width: 50, height: 50}});
   imageUrl:string = './assets/busicon.png'
   selectedLine:Line = new Line();
-  role:string = localStorage.role;
 
   constructor(private ngZone: NgZone,
-              private stationsHttp:StationHttpService,
-              private lineHttp:LineHttpService,
-              private fb:FormBuilder,
-              private router:Router) { }
+    private stationsHttp:StationHttpService,
+    private lineHttp:LineHttpService) { }
 
   ngOnInit() {
     this.stationsHttp.getAll().subscribe(data => {
@@ -49,13 +43,9 @@ export class LinesComponent implements OnInit {
       }
       return 0;
     });
-
-    this.polylines = [];
   }
 
   changedLine(){
-    this.polyline = new Polyline([], 'blue', { url:"assets/busicon.png", scaledSize: {width: 50, height: 50}});
-    
     let splited = this.selectedLine.Order.split(',');
     let len = splited.length - 1
     let orderNum = [];
@@ -64,6 +54,7 @@ export class LinesComponent implements OnInit {
       orderNum.push(numberr)
     }
 
+    this.polyline = new Polyline([], 'blue', { url:"assets/busicon.png", scaledSize: {width: 50, height: 50}});
     for(let ord of orderNum){
       for(let point of this.selectedLine.Stations){
         if(point.Id == ord){
@@ -71,6 +62,7 @@ export class LinesComponent implements OnInit {
         }
       }  
     }
+                                
     //prigradske su crvene
     if(this.selectedLine.LineTypeId == 2){
       this.polyline.color = "red";
@@ -79,15 +71,14 @@ export class LinesComponent implements OnInit {
     }
   }
 
-  addLine(){
-    this.router.navigate(['admin','addLine']);
-  }
-
-  changeLine(){
-    this.router.navigate(['admin','changeLine']);
-  }
-
   deleteLine(){
-    this.router.navigate(['admin','deleteLine']);
+    this.lineHttp.delete(this.selectedLine.Id).subscribe(data => {
+        if(data){
+          alert('Uspesno ste obrisali liniju '+this.selectedLine.Name)
+        }else{
+          alert('Doslo je do greske pri brisanju!');
+        }
+    })
   }
+
 }

@@ -10,4 +10,5 @@ export class Line {
   LineType: LineType;
   Stations:Station[];
   Schedules:Schedule[];
+  Order:string;
 }

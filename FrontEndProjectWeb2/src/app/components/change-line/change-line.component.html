@@ -79,5 +79,5 @@
     <button type="submit" [disabled]="!changeLineForm.valid">Izmeni</button>
     
   </form>
-  <button (click)="changeStations()">Izmeni stanice</button>
+  <button (click)="changeStations()" [disabled]="selectedLine===undefined || selectedLine.Id===undefined">Izmeni stanice</button>
   

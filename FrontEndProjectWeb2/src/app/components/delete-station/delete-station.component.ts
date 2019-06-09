@@ -43,9 +43,9 @@ export class DeleteStationComponent implements OnInit {
   deleteStation(){
         this.stationsHttp.delete(this.Station.Id).subscribe(data => {
           if(data){
-            alert("Uspeno ste dodali stanicu!")
+            alert("Uspeno ste obrisali stanicu!")
           }else{
-            alert("Doslo je do greske!")
+            alert("Doslo je do greske pri brisanju!")
           }
         })
       }

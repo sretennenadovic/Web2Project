@@ -45,6 +45,7 @@ import { LineHttpService } from './services/lines/line.service';
 import { AddLineComponent } from './components/add-line/add-line.component';
 import { LineTypeHttpService } from './services/linetypes/linetypes.service';
 import { ChangeLineComponent } from './components/change-line/change-line.component';
+import { DeleteLineComponent } from './components/delete-line/delete-line.component';
 
 
 const childrenUnauthorizedRoutes: Routes = [
@@ -70,7 +71,8 @@ const childrenAdminRoutes: Routes = [
   {path: "deleteStation", component: DeleteStationComponent},
   {path: "lines", component: LinesComponent},
   {path: "addLine", component: AddLineComponent},
-  {path: "changeLine", component: ChangeLineComponent}
+  {path: "changeLine", component: ChangeLineComponent},
+  {path: "deleteLine", component: DeleteLineComponent}
 ];
 
 const routes: Routes = [
@@ -127,7 +129,8 @@ const routes: Routes = [
     ChangeStationComponent,
     DeleteStationComponent,
     AddLineComponent,
-    ChangeLineComponent
+    ChangeLineComponent,
+    DeleteLineComponent
   ],
   imports: [
     BrowserModule,

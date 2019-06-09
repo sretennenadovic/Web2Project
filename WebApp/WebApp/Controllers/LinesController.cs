@@ -57,14 +57,6 @@ namespace WebApp.Controllers
                 return Ok(false);
             }
 
-            //var obj = db.Lines.Find(x => x.Id==id).FirstOrDefault();
-
-            //Line newLine = new Line();
-            //newLine.Id = line.Id;
-            //newLine.Name = line.Name;
-            //newLine.LineTypeId = line.LineTypeId;
-            //newLine.Number = line.Number;
-
             List<Station> stations = new List<Station>();
 
             foreach (var item in line.Stations)
@@ -72,8 +64,6 @@ namespace WebApp.Controllers
                 stations.Add(db.Stations.Find(x => x.Id == item.Id).FirstOrDefault());
             }
 
-
-            //newLine.Stations = stations;
             var l = db.Lines.Get(line.Id);
             l.Stations.Clear();
             db.Complete();
@@ -82,6 +72,7 @@ namespace WebApp.Controllers
             l.LineTypeId = line.LineTypeId;
             l.Number = line.Number;
             l.Stations = stations;
+            l.Order = line.Order;
 
             db.Lines.Update(l);
 
@@ -117,6 +108,7 @@ namespace WebApp.Controllers
             newLine.Name = line.Name;
             newLine.LineTypeId = line.LineTypeId;
             newLine.Number = line.Number;
+            newLine.Order = line.Order;
 
             List<Station> stations = new List<Station>();
 
@@ -135,19 +127,19 @@ namespace WebApp.Controllers
         }
 
         // DELETE: api/Lines/5
-        [ResponseType(typeof(Line))]
+        [ResponseType(typeof(bool))]
         public IHttpActionResult DeleteLine(int id)
         {
             Line line = db.Lines.Get(id);
             if (line == null)
             {
-                return NotFound();
+                return Ok(false);
             }
 
             db.Lines.Remove(line);
             db.Complete();
 
-            return Ok(line);
+            return Ok(true);
         }
 
         protected override void Dispose(bool disposing)

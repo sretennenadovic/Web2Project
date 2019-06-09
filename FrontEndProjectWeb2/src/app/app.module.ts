@@ -42,6 +42,9 @@ import { StationHttpService } from './services/station/station.service';
 import { ChangeStationComponent } from './components/change-station/change-station.component';
 import { DeleteStationComponent } from './components/delete-station/delete-station.component';
 import { LineHttpService } from './services/lines/line.service';
+import { AddLineComponent } from './components/add-line/add-line.component';
+import { LineTypeHttpService } from './services/linetypes/linetypes.service';
+import { ChangeLineComponent } from './components/change-line/change-line.component';
 
 
 const childrenUnauthorizedRoutes: Routes = [
@@ -65,7 +68,9 @@ const childrenAdminRoutes: Routes = [
   {path: "stations", component: AdminStationsComponent},
   {path: "changeStation", component: ChangeStationComponent},
   {path: "deleteStation", component: DeleteStationComponent},
-  {path: "lines", component: LinesComponent}
+  {path: "lines", component: LinesComponent},
+  {path: "addLine", component: AddLineComponent},
+  {path: "changeLine", component: ChangeLineComponent}
 ];
 
 const routes: Routes = [
@@ -120,7 +125,9 @@ const routes: Routes = [
     PassengerComponent,
     AdminStationsComponent,
     ChangeStationComponent,
-    DeleteStationComponent
+    DeleteStationComponent,
+    AddLineComponent,
+    ChangeLineComponent
   ],
   imports: [
     BrowserModule,
@@ -139,7 +146,8 @@ const routes: Routes = [
     ScheduleLineHttpService,
     TicketPostService,
     StationHttpService,
-    LineHttpService
+    LineHttpService,
+    LineTypeHttpService
   ],
   bootstrap: [AppComponent]
 })

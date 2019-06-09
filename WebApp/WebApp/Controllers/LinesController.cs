@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 using WebApp.Models;
 using WebApp.Persistence;
 using WebApp.Persistence.UnitOfWork;
+using System.Data.Entity.Migrations;
 
 namespace WebApp.Controllers
 {
@@ -43,20 +44,46 @@ namespace WebApp.Controllers
         }
 
         // PUT: api/Lines/5
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(bool))]
         public IHttpActionResult PutLine(int id, Line line)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return Ok(false);
             }
 
             if (id != line.Id)
             {
-                return BadRequest();
+                return Ok(false);
             }
 
-            db.Lines.Update(line);
+            //var obj = db.Lines.Find(x => x.Id==id).FirstOrDefault();
+
+            //Line newLine = new Line();
+            //newLine.Id = line.Id;
+            //newLine.Name = line.Name;
+            //newLine.LineTypeId = line.LineTypeId;
+            //newLine.Number = line.Number;
+
+            List<Station> stations = new List<Station>();
+
+            foreach (var item in line.Stations)
+            {
+                stations.Add(db.Stations.Find(x => x.Id == item.Id).FirstOrDefault());
+            }
+
+
+            //newLine.Stations = stations;
+            var l = db.Lines.Get(line.Id);
+            l.Stations.Clear();
+            db.Complete();
+
+            l.Name = line.Name;
+            l.LineTypeId = line.LineTypeId;
+            l.Number = line.Number;
+            l.Stations = stations;
+
+            db.Lines.Update(l);
 
             try
             {
@@ -74,22 +101,37 @@ namespace WebApp.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(true);
         }
         
         // POST: api/Lines
-        [ResponseType(typeof(Line))]
+        [ResponseType(typeof(bool))]
         public IHttpActionResult PostLine(Line line)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return Ok(false);
             }
 
-            db.Lines.Add(line);
+            Line newLine = new Line();
+            newLine.Name = line.Name;
+            newLine.LineTypeId = line.LineTypeId;
+            newLine.Number = line.Number;
+
+            List<Station> stations = new List<Station>();
+
+            foreach (var item in line.Stations)
+            {
+                stations.Add(db.Stations.Find(x => x.Id == item.Id).FirstOrDefault());
+                db.Complete();
+            }
+
+            newLine.Stations = stations;
+
+            db.Lines.Add(newLine);
             db.Complete();
 
-            return CreatedAtRoute("DefaultApi", new { id = line.Id }, line);
+            return Ok(true);
         }
 
         // DELETE: api/Lines/5

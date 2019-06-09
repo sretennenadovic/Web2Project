@@ -24,7 +24,7 @@ export class AdminStationsComponent implements OnInit {
   imageUrl:string = './assets/busicon.png'
 
   addStationForm = this.fb.group({
-    name: ['', Validators.required],
+    name: ['', [Validators.required,Validators.maxLength(20)]],
     address: ['', Validators.required],
   });
 

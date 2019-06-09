@@ -23,6 +23,7 @@ export class LinesComponent implements OnInit {
   polyline: Polyline = new Polyline([], 'blue', { url:"assets/busicon.png", scaledSize: {width: 50, height: 50}});
   imageUrl:string = './assets/busicon.png'
   selectedLine:Line = new Line();
+  role:string = localStorage.role;
 
   constructor(private ngZone: NgZone,
               private stationsHttp:StationHttpService,
@@ -50,16 +51,27 @@ export class LinesComponent implements OnInit {
     });
 
     this.polylines = [];
-
-    console.log(this.sortedLines)
   }
 
   changedLine(){
+    this.polyline = new Polyline([], 'blue', { url:"assets/busicon.png", scaledSize: {width: 50, height: 50}});
     for(let point of this.selectedLine.Stations){
       this.polyline.addLocation(new GeoLocation(point.Latitude,point.Longitude))
     }  
-    this.polylines.push(this.polyline);
+
+    //prigradske su crvene
+    if(this.selectedLine.LineTypeId == 2){
+      this.polyline.color = "red";
+    }else{
+      this.polyline.color = "blue";
+    }
   }
 
+  addLine(){
+    this.router.navigate(['admin','addLine']);
+  }
 
+  changeLine(){
+    this.router.navigate(['admin','changeLine']);
+  }
 }

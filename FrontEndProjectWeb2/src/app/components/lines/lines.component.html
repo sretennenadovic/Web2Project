@@ -21,10 +21,8 @@
             </agm-info-window>
       </agm-marker>
       <agm-polyline [strokeColor]="polyline.color">
-        <ng-container *ngFor="let polyline of polylines">
           <agm-polyline-point *ngFor="let point of polyline.path" [latitude]="point.latitude" [longitude]="point.longitude">
           </agm-polyline-point>
-          </ng-container>
      </agm-polyline>
       
   </agm-map>
@@ -42,3 +40,10 @@
       </tr>
     </tbody>
 </table>
+
+<div *ngIf="role==='Admin'">
+<button (click)="addLine()" >Dodaj novu</button>
+</div>
+<div *ngIf="role==='Admin'">
+    <button (click)="changeLine()" >Izmeni</button>
+</div>

@@ -18,5 +18,10 @@ namespace WebApp.Persistence.Repository
         {
             return context.Set<Line>().Include("Stations").ToList();
         }
+
+        public new Line Get(int id)
+        {
+            return context.Set<Line>().Include("Stations").Where(x => x.Id==id).FirstOrDefault();
+        }
     }
 }

@@ -1,0 +1,83 @@
+<p>
+    <!-- Kreiramo mapu -->
+    <agm-map [latitude]="45.242268" [longitude]="19.842954" [zoom]="18">  
+  
+        <agm-marker *ngFor="let station of stations" (markerClick)="selectedStation(station)" [latitude]="station.Latitude" [longitude]="station.Longitude" [iconUrl]="imageUrl">
+            <agm-info-window [latitude]="station.Latitude" [longitude]="station.Longitude">
+                <span>
+                  Ime: {{station.Name}}
+                </span>
+                <br/>
+                <span>
+                  Adresa: {{station.Address}}
+                </span>
+                <br/>
+                <span>
+                  Linije:
+                  <ng-container *ngFor="let linesStation of station.Lines">
+                  {{linesStation.Number}}
+                  </ng-container>
+                </span>
+              </agm-info-window>
+        </agm-marker>
+        <agm-polyline [strokeColor]="polyline.color">
+            <agm-polyline-point *ngFor="let point of polyline.path" [latitude]="point.latitude" [longitude]="point.longitude">
+            </agm-polyline-point>
+       </agm-polyline>
+        
+    </agm-map>
+  </p>
+  
+  <table class="table table-condensed ">
+      <tbody>
+        <tr>
+          <td>Spisak linija:</td>
+          <td><select class="sirina" [(ngModel)]="selectedLine" (change)="changedLine()">
+              <option *ngFor="let sortedLine of sortedLines" [ngValue]="sortedLine">
+                {{sortedLine.Name}}
+              </option>
+          </select></td>
+        </tr>
+      </tbody>
+  </table>
+
+  <form [formGroup]="changeLineForm" (ngSubmit)="changeLine()">
+      <table>
+        <tr>
+            <td>
+                Ime linije:
+          </td>
+          <td>
+            <input type="text" formControlName="name"
+            required
+            class="form-control"/>
+        </td>
+      </tr>
+      <tr>
+          <td>
+              Broj linije:
+        </td>
+        <td>
+          <input type="number" formControlName="number"
+          required
+          class="form-control"/>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Tip linije:
+      </td>
+      <td>
+          <select class="sirina" formControlName="type"> 
+              <option *ngFor="let lineType of lineTypes" [ngValue]="lineType">
+                {{lineType.Name}}
+              </option>
+          </select>
+      </td>
+    </tr>
+    </table>
+    <button type="submit" [disabled]="!changeLineForm.valid">Izmeni</button>
+    
+  </form>
+  <button (click)="changeStations()">Izmeni stanice</button>
+  

@@ -24,6 +24,9 @@ export class LinesComponent implements OnInit {
   imageUrl:string = './assets/busicon.png'
   selectedLine:Line = new Line();
   role:string = localStorage.role;
+  lineName:string=''
+  lineNum:string=''
+  lineType:string=''
 
   constructor(private ngZone: NgZone,
               private stationsHttp:StationHttpService,
@@ -77,6 +80,10 @@ export class LinesComponent implements OnInit {
     }else{
       this.polyline.color = "blue";
     }
+
+    this.lineName = this.selectedLine.Name;
+    this.lineNum = this.selectedLine.Number.toString();
+    this.lineType = this.selectedLine.LineTypeId == 1 ? "Gradska" : "Prigradska"
   }
 
   addLine(){

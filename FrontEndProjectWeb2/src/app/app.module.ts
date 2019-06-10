@@ -49,6 +49,7 @@ import { DeleteLineComponent } from './components/delete-line/delete-line.compon
 import { ControlorNavBarComponent } from './components/controlor-nav-bar/controlor-nav-bar.component';
 import { ControllorValidationComponent } from './components/controllor-validation/controllor-validation.component';
 import { AddControllerComponent } from './components/add-controller/add-controller.component';
+import { PassengerNavBarComponent } from './components/passenger-nav-bar/passenger-nav-bar.component';
 
 
 const childrenUnauthorizedRoutes: Routes = [
@@ -85,6 +86,14 @@ const childrenControlorRoutes: Routes = [
   {path: "validation", component: ControllorValidationComponent}
 ];
 
+const childrenPassengerRoutes: Routes = [
+  {path: "", redirectTo: "/passenger/schedule", pathMatch: "full"},
+  { path: "schedule", component: ScheduleComponent },
+  { path: "lines", component: LinesComponent },
+  { path: "vehicleLocations", component: VehicleLocationsComponent },
+  { path: "catalog", component: CatalogComponent }
+];
+
 const routes: Routes = [
   {
     path: "unauthorizedUser",
@@ -107,7 +116,8 @@ const routes: Routes = [
   {
     path: "passenger",
     component: PassengerComponent,
-    canActivate: [AuthGuardPassenger]
+    canActivate: [AuthGuardPassenger],
+    children: childrenPassengerRoutes
   }
 ];
 
@@ -144,7 +154,8 @@ const routes: Routes = [
     DeleteLineComponent,
     ControlorNavBarComponent,
     ControllorValidationComponent,
-    AddControllerComponent
+    AddControllerComponent,
+    PassengerNavBarComponent
   ],
   imports: [
     BrowserModule,

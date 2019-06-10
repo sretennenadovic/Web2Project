@@ -1,3 +1,9 @@
-<p>
-  passenger works!
-</p>
+<div class="d-flex" id="wrapper">
+  <app-passenger-nav-bar></app-passenger-nav-bar>
+  <div id="page-content-wrapper" style="width: 100%;">
+          <app-authorized-user-header></app-authorized-user-header>
+          <div class="container-fluid">
+              <router-outlet></router-outlet>
+          </div>
+  </div>
+</div>

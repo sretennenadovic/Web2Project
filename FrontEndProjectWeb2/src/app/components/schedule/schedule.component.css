@@ -20,8 +20,8 @@
 }
 #mydiv2 {
   position: fixed;
-  top: 70%;
-  left: 35%;
+  top: 75%;
+  left: 40%;
   width: 60em;
   height: 6em;
   margin-top: -9em; /*set to a negative number 1/2 of your height*/

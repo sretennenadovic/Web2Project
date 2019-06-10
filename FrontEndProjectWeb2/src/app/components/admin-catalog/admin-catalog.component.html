@@ -2,5 +2,5 @@
 <h2>Cenovnici</h2>
 
 <ul *ngFor="let catalog of values">
-  <li (click) = "selectedCatalog(catalog)">Cenovnik id:{{catalog.Id}} vazi od {{catalog.ValidFrom}}, vazi <label *ngIf="catalog.ValidTo!=null">do: </label> {{catalog.ValidTo}}<label *ngIf="catalog.ValidTo==null">jos uvek</label></li> 
+  <li (click) = "selectedCatalog(catalog)">Cenovnik id:{{catalog.Id}} vazi od {{catalog.ValidFrom | date :"fullDate"}}, vazi <label *ngIf="catalog.ValidTo!=null">do: </label> {{catalog.ValidTo | date :"fullDate"}}<label *ngIf="catalog.ValidTo==null">jos uvek</label></li> 
 </ul>

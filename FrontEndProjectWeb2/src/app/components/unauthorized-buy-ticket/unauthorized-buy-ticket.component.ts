@@ -23,7 +23,7 @@ export class UnauthorizedBuyTicketComponent implements OnInit {
 
   buyOneTimeTicket(){
     this.buyOneTimeTIcketService.postOneTimeTicket(this.buyOneTimeTicketForm.value).subscribe((data) => {
-      alert("Uspesno ste kupili kartu u "+(data as Date)+", i vazi u narednih sat vremena!");
+      alert("Uspesno ste kupili kartu u "+(data as Date) +", i vazi u narednih sat vremena!");
     }), err=>console.log(err);
   }
 

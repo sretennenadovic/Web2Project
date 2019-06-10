@@ -10,3 +10,8 @@ export class TicketPostService extends BaseHttpService<any>{
 export class OneTimeTicketService extends BaseHttpService<any>{
     specificUrl = "/api/Tickets/PostUnauthorizedTicket";
 }
+
+@Injectable()
+export class TicketValidationHttpService extends BaseHttpService<any> {
+  specificUrl = "/api/Tickets/GetTicketValidation";
+}

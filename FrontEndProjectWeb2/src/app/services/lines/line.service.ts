@@ -6,3 +6,8 @@ import { Line } from 'src/app/models/Line';
 export class LineHttpService extends BaseHttpService<Line> {
   specificUrl = "/api/Lines";
 }
+
+@Injectable()
+export class LinValidationHttpService extends BaseHttpService<any> {
+  specificUrl = "/api/Lines/GetTicketValidation";
+}

@@ -1,4 +1,10 @@
 <p>
   Unesite ID karte radi provere!
 </p>
-<input type="number">
+<input type="number" [(ngModel)]="inputedId">
+<button (click)="checkIfItsValid()" [disabled]="inputedId===undefined
+ || inputedId==='undefined'
+  || inputedId===null || inputedId==='null'">Proveri</button>
+<div *ngIf="result!=='' && result!==undefined && result!=='undefined'">
+<h3>Rezultat obrade: </h3>{{result}}
+</div>

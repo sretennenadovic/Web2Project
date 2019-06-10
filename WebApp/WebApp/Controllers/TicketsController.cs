@@ -110,6 +110,58 @@ namespace WebApp.Controllers
             return Ok(ticket);
         }
 
+        //metoda za kontrolera, za id karte dobije nazad da li je vazeca ili ne
+        //u zavisnosti od njenog tipa
+        [Route("api/Tickets/GetTicketValidation/{id}")]
+        [ResponseType(typeof(bool))]
+        public IHttpActionResult GetTicketValidation(int id)
+        {
+            Ticket ticket = db.Tickets.Get(id);           
+            if (ticket == null)
+            {
+                return Ok(false);
+            }
+
+            if (CheckValidation(ticket))
+            {
+                db.Tickets.Update(ticket);
+                db.Complete();
+                return Ok(true);
+            }
+            else
+            {
+                db.Tickets.Update(ticket);
+                db.Complete();
+                return Ok(false);
+            }
+        }
+
+        private bool CheckValidation(Ticket ticket)
+        {
+            List<TicketType> types = db.TicketTypes.GetAll().ToList();
+            bool isValid = false;
+
+            if (ticket.TicketType.Name.Equals(types[0].Name))
+            {
+                double hours = (DateTime.Now - ticket.TimeIssued).TotalHours;
+                isValid = hours > 1 ? false : true;
+            }else if (ticket.TicketType.Name.Equals(types[1].Name))
+            {
+                isValid = DateTime.Now.Date == ticket.TimeIssued.Date;
+            }
+            else if (ticket.TicketType.Name.Equals(types[2].Name))
+            {
+                isValid = DateTime.Now.Month == ticket.TimeIssued.Month;
+            }
+            else if (ticket.TicketType.Name.Equals(types[3].Name))
+            {
+                isValid = DateTime.Now.Year == ticket.TimeIssued.Year;
+            }
+
+            ticket.IsValid = isValid;
+            return isValid;
+        }
+
         [Route("api/Tickets/PostUnauthorizedTicket")]
         [ResponseType(typeof(DateTime))]
         public IHttpActionResult PostUnauthorizedTicket(TicketUnauthorized tu)
@@ -136,7 +188,11 @@ namespace WebApp.Controllers
         {
             MailMessage mail = new MailMessage();
             SmtpClient smtpserver = new SmtpClient("smtp.gmail.com");
-            mail.To.Add(recipient);
+            try
+            {
+                mail.To.Add(recipient);
+            }
+            catch (Exception e) { }
             mail.Subject = subject;
             mail.Body = body;
             mail.From = new MailAddress("titovrentavehicle@gmail.com");
@@ -145,7 +201,6 @@ namespace WebApp.Controllers
             smtpserver.EnableSsl = true;
             smtpserver.Send(mail);
         }
-
 
         protected override void Dispose(bool disposing)
         {

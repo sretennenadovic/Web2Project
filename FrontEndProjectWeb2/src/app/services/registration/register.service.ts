@@ -7,6 +7,11 @@ export class Register extends BaseHttpService<any>{
 }
 
 @Injectable()
+export class RegisterController extends BaseHttpService<any>{
+    specificUrl = "/api/Account/PostRegisterController"
+}
+
+@Injectable()
 export class UploadImage extends BaseHttpService<any>{
     specificUrl = "/api/Account/UplaodImage"
 }

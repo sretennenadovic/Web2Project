@@ -29,4 +29,8 @@ export class AdminNavBarComponent implements OnInit {
     this.router.navigate(['admin','lines'])
   }
 
+  controllor(){
+    this.router.navigate(['admin','addContr'])
+  }
+
 }

@@ -364,6 +364,37 @@ namespace WebApp.Controllers
             return Ok();
         }
 
+        [Authorize(Roles ="Admin")]
+        [Route("PostRegisterController")]
+        public async Task<IHttpActionResult> PostRegisterController(RegisterBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Address = model.Address, BirthDate = model.BirthDate };
+
+            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+
+            result = await UserManager.AddToRoleAsync(user.Id, "Controller");
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+
+            return Ok();
+        }
+
+
         //upload slike
     /*    [Route("api/Account/PostUplaodImage")]
         [AllowAnonymous]

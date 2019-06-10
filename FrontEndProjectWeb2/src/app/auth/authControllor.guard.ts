@@ -20,7 +20,7 @@ export class AuthGuardContorllor implements CanActivate, CanActivateChild {
       this.router.navigate(['unauthorizedUser','login']);
       return false;
     }  
-    else if (localStorage.role === 'Controllor') {
+    else if (localStorage.role === 'Controller') {
       return true;
     }
     // not logged in so redirect to login page

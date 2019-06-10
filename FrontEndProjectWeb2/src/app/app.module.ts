@@ -46,6 +46,9 @@ import { AddLineComponent } from './components/add-line/add-line.component';
 import { LineTypeHttpService } from './services/linetypes/linetypes.service';
 import { ChangeLineComponent } from './components/change-line/change-line.component';
 import { DeleteLineComponent } from './components/delete-line/delete-line.component';
+import { ControlorNavBarComponent } from './components/controlor-nav-bar/controlor-nav-bar.component';
+import { ControllorValidationComponent } from './components/controllor-validation/controllor-validation.component';
+import { AddControllerComponent } from './components/add-controller/add-controller.component';
 
 
 const childrenUnauthorizedRoutes: Routes = [
@@ -59,6 +62,7 @@ const childrenUnauthorizedRoutes: Routes = [
 ];
 
 const childrenAdminRoutes: Routes = [
+  {path: "", redirectTo: "/admin/adminSchedule", pathMatch: "full"},
   {path: "adminSchedule", component: AdminScheduleComponent},
   {path: "adminAddSchedule", component: AdminAddScheduleComponent},
   {path: "adminChangeSchedule", component: AdminChangeScheduleComponent},
@@ -72,7 +76,13 @@ const childrenAdminRoutes: Routes = [
   {path: "lines", component: LinesComponent},
   {path: "addLine", component: AddLineComponent},
   {path: "changeLine", component: ChangeLineComponent},
-  {path: "deleteLine", component: DeleteLineComponent}
+  {path: "deleteLine", component: DeleteLineComponent},
+  {path: "addContr", component: AddControllerComponent}
+];
+
+const childrenControlorRoutes: Routes = [
+  {path: "", redirectTo: "/controllor/validation", pathMatch: "full"},
+  {path: "validation", component: ControllorValidationComponent}
 ];
 
 const routes: Routes = [
@@ -91,11 +101,12 @@ const routes: Routes = [
   {
     path: "controllor",
     component: ControlorComponent,
-    canActivate: [AuthGuardContorllor]
+    canActivate: [AuthGuardContorllor],
+    children: childrenControlorRoutes
   },
   {
     path: "passenger",
-    component: ControlorComponent,
+    component: PassengerComponent,
     canActivate: [AuthGuardPassenger]
   }
 ];
@@ -130,7 +141,10 @@ const routes: Routes = [
     DeleteStationComponent,
     AddLineComponent,
     ChangeLineComponent,
-    DeleteLineComponent
+    DeleteLineComponent,
+    ControlorNavBarComponent,
+    ControllorValidationComponent,
+    AddControllerComponent
   ],
   imports: [
     BrowserModule,

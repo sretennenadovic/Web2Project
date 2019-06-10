@@ -93,6 +93,7 @@ export class ChangeLineComponent implements OnInit {
     }
 
     this.lineChanged.Stations = this.selectedLine.Stations
+    this.lineChanged.Order = this.selectedLine.Order
                                 
     //prigradske su crvene
     if(this.selectedLine.LineTypeId == 2){

@@ -1,49 +1,68 @@
 <table>
-    <tr>
-      <td>
-  <p>
-    <!-- Kreiramo mapu -->
-    <agm-map [latitude]="45.242268" [longitude]="19.842954" [zoom]="18" (mapClick)="placeMarker($event)">  
-  
-      <agm-marker *ngFor="let station of stations" (markerClick)="selectedStation(station)" [latitude]="station.Latitude" [longitude]="station.Longitude" [iconUrl]="imageUrl">
-        
-        <agm-info-window [latitude]="station.Latitude" [longitude]="station.Longitude">
-          <span>
-            Ime: {{station.Name}}
-          </span>
-          <br/>
-          <span>
-            Adresa: {{station.Address}}
-          </span>
-          <br/>
-          <span>
-            Linije:
-            <ng-container *ngFor="let linesStation of station.Lines">
-            {{linesStation.Number}}
-            </ng-container>
-          </span>
-        </agm-info-window>
-  
-      </agm-marker>
-  
-      <!--*ngFor="let point of polyline.path"-->
-      <agm-marker *ngIf="newStationGL!=undefined" [latitude]="newStationGL.latitude" [longitude]="newStationGL.longitude" [iconUrl]="imageUrl">
-      </agm-marker>
-  
-    </agm-map>
-  </p>
-  </td>
-  <td>
-    <h2>Obrisi stanicu</h2>
-    <form [formGroup]="deleteStationForm" (ngSubmit)="deleteStation()">
-    <table>
-      <tr>
-        <td>
-            <button type="submit" [disabled]="!deleteStationForm.valid">Obrisi</button>
-        </td>
-      </tr>
-  </table>
-  </form>
-  </td>
+  <tr>
+    <td>
+      <p>
+        <!-- Kreiramo mapu -->
+        <agm-map
+          [latitude]="45.242268"
+          [longitude]="19.842954"
+          [zoom]="18"
+          (mapClick)="placeMarker($event)"
+        >
+          <agm-marker
+            *ngFor="let station of stations"
+            (markerClick)="selectedStation(station)"
+            [latitude]="station.Latitude"
+            [longitude]="station.Longitude"
+            [iconUrl]="imageUrl"
+          >
+            <agm-info-window
+              [latitude]="station.Latitude"
+              [longitude]="station.Longitude"
+            >
+              <span> Ime: {{ station.Name }} </span>
+              <br />
+              <span> Adresa: {{ station.Address }} </span>
+              <br />
+              <span>
+                Linije:
+                <ng-container *ngFor="let linesStation of station.Lines">
+                  {{ linesStation.Number }}
+                </ng-container>
+              </span>
+            </agm-info-window>
+          </agm-marker>
+
+          <!--*ngFor="let point of polyline.path"-->
+          <agm-marker
+            *ngIf="newStationGL != undefined"
+            [latitude]="newStationGL.latitude"
+            [longitude]="newStationGL.longitude"
+            [iconUrl]="imageUrl"
+          >
+          </agm-marker>
+        </agm-map>
+      </p>
+    </td>
+    <td>
+      <h3>&nbsp;&nbsp;&nbsp;&nbsp;Obrisi stanicu</h3>
+      <form [formGroup]="deleteStationForm" (ngSubmit)="deleteStation()">
+        <table>
+          <tr>
+            <td align="center">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;
+              <button
+                type="submit"
+                [disabled]="!deleteStationForm.valid"
+                class="btn btn-secondary"
+              >
+                Obrisi
+              </button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </td>
   </tr>
-  </table>
+</table>

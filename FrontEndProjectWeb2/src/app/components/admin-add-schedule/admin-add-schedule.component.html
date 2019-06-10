@@ -1,36 +1,53 @@
-<div class="container">
-    <div class="row">
-          <div class="span12">
-<table class="table table-condensed ">
-  <tbody>
-    <tr>
-      <td>Vrsta reda voznje:</td>
-      <td><select class="sirina" [(ngModel)]="selectedScheduleType">
-          <option *ngFor="let scheduleType of values.ScheduleTypes" [ngValue]="scheduleType">
-            {{scheduleType.Name}}
-          </option>
-      </select></td>
-    </tr>
-    <tr>
-      <td>Linije:</td>
-      <td><select class="sirina" [(ngModel)]="selectedL">
-        <ng-container *ngFor="let line of values.Lines">
-          <option [ngValue]="line">
-            {{line.Name}}
-          </option>
-          </ng-container>
-      </select></td>    
-    </tr>
-    <tr >
-      <td colspan="2">
-        <input required [(ngModel)]="inputSchedule"/>
-      </td>
-    </tr>
-    <tr>
-      <td><button (click)="addSchedule()" class="btn btn-secondary">Dodaj R.voznje</button></td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
+<div class="container" id="mydiv">
+  <div class="row">
+    <div class="span12">
+      <table class="table table-condensed ">
+        <tbody>
+          <tr>
+            <td>Vrsta reda voznje:</td>
+            <td>
+              <select class="sirina" [(ngModel)]="selectedScheduleType">
+                <option
+                  *ngFor="let scheduleType of values.ScheduleTypes"
+                  [ngValue]="scheduleType"
+                >
+                  {{ scheduleType.Name }}
+                </option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Linije:</td>
+            <td>
+              <select class="sirina" [(ngModel)]="selectedL">
+                <ng-container *ngFor="let line of values.Lines">
+                  <option [ngValue]="line">
+                    {{ line.Name }}
+                  </option>
+                </ng-container>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Polasci:
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input required [(ngModel)]="inputSchedule" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button (click)="addSchedule()" class="btn btn-secondary">
+                Dodaj R.voznje
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

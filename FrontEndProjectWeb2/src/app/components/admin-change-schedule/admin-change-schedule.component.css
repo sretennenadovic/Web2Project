@@ -1,19 +1,31 @@
-.sirina{
-    width: 200px
+.sirina {
+  width: 200px;
 }
 
-.btn-black{
-    background-color: #000 !important;
-    color: #fff;
+.btn-black {
+  background-color: #000 !important;
+  color: #fff;
 }
 
-td{
-    min-width: 70px;
+td {
+  min-width: 70px;
 }
 
-input{
-    min-width: 400px;
-    max-width: 400px;
-    min-height: 50px;
-    max-height: 100px;
+input {
+  min-width: 400px;
+  max-width: 400px;
+  min-height: 50px;
+  max-height: 100px;
+}
+
+#mydiv {
+  position: fixed;
+  top: 30%;
+  left: 55%;
+  width: 27em;
+  height: 18em;
+  margin-top: -9em; /*set to a negative number 1/2 of your height*/
+  margin-left: -15em; /*set to a negative number 1/2 of your width*/
+  border: 1px solid #ccc;
+  background-color: #f3f3f3;
 }

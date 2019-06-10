@@ -1,12 +1,33 @@
-.sirina{
-    width: 200px
+.sirina {
+  width: 200px;
 }
 
-.btn-black{
-    background-color: #000 !important;
-    color: #fff;
+.btn-black {
+  background-color: #000 !important;
+  color: #fff;
 }
 
-td{
-    min-width: 70px;
+td {
+  min-width: 70px;
+}
+#mydiv {
+  position: fixed;
+  top: 30%;
+  left: 45%;
+  width: 50em;
+  height: 18em;
+  margin-top: -9em; /*set to a negative number 1/2 of your height*/
+  margin-left: -15em; /*set to a negative number 1/2 of your width*/
+  border: 1px solid #ccc;
+  background-color: #f3f3f3;
+}
+
+#mydiv2 {
+  position: fixed;
+  top: 70%;
+  left: 45%;
+  width: 50em;
+  height: 6em;
+  margin-top: -9em; /*set to a negative number 1/2 of your height*/
+  margin-left: -15em; /*set to a negative number 1/2 of your width*/
 }

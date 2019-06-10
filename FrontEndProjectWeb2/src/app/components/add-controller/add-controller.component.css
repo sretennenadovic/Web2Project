@@ -1,0 +1,15 @@
+.btn-black {
+  background-color: #000 !important;
+  color: #fff;
+}
+#mydiv {
+  position: fixed;
+  top: 30%;
+  left: 55%;
+  width: 35em;
+  height: 35em;
+  margin-top: -9em; /*set to a negative number 1/2 of your height*/
+  margin-left: -15em; /*set to a negative number 1/2 of your width*/
+  border: 1px solid #ccc;
+  background-color: #f3f3f3;
+}

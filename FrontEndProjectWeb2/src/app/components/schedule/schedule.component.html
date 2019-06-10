@@ -1,42 +1,73 @@
 <div class="container">
-    <div class="row">
-          <div class="span12">
-<table class="table table-condensed table-hover">
-  <tbody>
-    <tr>
-      <td>Vrsta linije:</td>
-      <td><select class="sirina" [(ngModel)]="selectedLineType" (change)="changeOfLineType()">
-          <option *ngFor="let lineType of values.LineTypes" [ngValue]="lineType">
-            {{lineType.Name}}
-          </option>
-      </select></td>
-    </tr>
-    <tr>
-      <td>Vrsta reda voznje:</td>
-      <td><select class="sirina" [(ngModel)]="selectedScheduleType">
-          <option *ngFor="let scheduleType of values.ScheduleTypes" [ngValue]="scheduleType">
-            {{scheduleType.Name}}
-          </option>
-      </select></td>
-    </tr>
-    <tr>
-      <td>Linije:</td>
-      <td><select class="sirina" [(ngModel)]="selectedL">
-        <ng-container *ngFor="let line of values.Lines">
-          <option *ngIf="selectedLineType.Id===line.LineTypeId" [ngValue]="line">
-            {{line.Name}}
-          </option>
-          </ng-container>
-      </select></td>
-    </tr>
-    <tr>
-      <td><button (click)="changeOfLine()" class="btn btn-secondary">Red voznje</button></td>
-    </tr>
-  </tbody>
-</table>
+  <div class="row">
+    <div class="span12" id="mydiv">
+      <table class="table table-condensed table-hover">
+        <tbody>
+          <tr>
+            <td>Vrsta linije:</td>
+            <td>
+              <select
+                class="sirina"
+                [(ngModel)]="selectedLineType"
+                (change)="changeOfLineType()"
+              >
+                <option
+                  *ngFor="let lineType of values.LineTypes"
+                  [ngValue]="lineType"
+                >
+                  {{ lineType.Name }}
+                </option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Vrsta reda voznje:</td>
+            <td>
+              <select class="sirina" [(ngModel)]="selectedScheduleType">
+                <option
+                  *ngFor="let scheduleType of values.ScheduleTypes"
+                  [ngValue]="scheduleType"
+                >
+                  {{ scheduleType.Name }}
+                </option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Linije:</td>
+            <td>
+              <select class="sirina" [(ngModel)]="selectedL">
+                <ng-container *ngFor="let line of values.Lines">
+                  <option
+                    *ngIf="selectedLineType.Id === line.LineTypeId"
+                    [ngValue]="line"
+                  >
+                    {{ line.Name }}
+                  </option>
+                </ng-container>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button (click)="changeOfLine()" class="btn btn-secondary">
+                Red voznje
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
+<div
+  id="mydiv2"
+  *ngIf="
+    schedule.Departure !== '' &&
+    schedule.Departure !== undefined &&
+    schedule.Departure !== 'undefined'
+  "
+>
+  Rezultat pretrage:
+  <div>{{ schedule.Departure }}</div>
 </div>
-</div>
-
-Rezultat pretrage:
-<div>{{schedule.Departure}}</div>

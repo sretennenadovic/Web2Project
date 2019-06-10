@@ -1,61 +1,74 @@
 <table>
   <tr>
     <td>
-<p>
-  <!-- Kreiramo mapu -->
-  <agm-map [latitude]="45.242268" [longitude]="19.842954" [zoom]="18">  
-
-      <agm-marker *ngFor="let station of stations" [latitude]="station.Latitude" [longitude]="station.Longitude" [iconUrl]="imageUrl">
-          <agm-info-window [latitude]="station.Latitude" [longitude]="station.Longitude">
-              <span>
-                Ime: {{station.Name}}
-              </span>
-              <br/>
-              <span>
-                Adresa: {{station.Address}}
-              </span>
-              <br/>
+      <p>
+        <!-- Kreiramo mapu -->
+        <agm-map [latitude]="45.242268" [longitude]="19.842954" [zoom]="18">
+          <agm-marker
+            *ngFor="let station of stations"
+            [latitude]="station.Latitude"
+            [longitude]="station.Longitude"
+            [iconUrl]="imageUrl"
+          >
+            <agm-info-window
+              [latitude]="station.Latitude"
+              [longitude]="station.Longitude"
+            >
+              <span> Ime: {{ station.Name }} </span>
+              <br />
+              <span> Adresa: {{ station.Address }} </span>
+              <br />
               <span>
                 Linije:
                 <ng-container *ngFor="let linesStation of station.Lines">
-                {{linesStation.Number}}
+                  {{ linesStation.Number }}
                 </ng-container>
               </span>
             </agm-info-window>
-      </agm-marker>
-      <agm-polyline [strokeColor]="polyline.color">
-          <agm-polyline-point *ngFor="let point of polyline.path" [latitude]="point.latitude" [longitude]="point.longitude">
-          </agm-polyline-point>
-     </agm-polyline>
-      
-  </agm-map>
-</p>
-</td>
-<td>
-
-<table class="table table-condensed ">
-    <tbody>
-      <tr>
-        <td>Spisak linija:</td>
-        <td><select class="sirina" [(ngModel)]="selectedLine" (change)="changedLine()">
-            <option *ngFor="let sortedLine of sortedLines" [ngValue]="sortedLine">
-              {{sortedLine.Name}}
-            </option>
-        </select></td>
-      </tr>
-    </tbody>
-</table>
-
-<div *ngIf="role==='Admin'">
-<button (click)="addLine()" >Dodaj novu</button>
-</div>
-<div *ngIf="role==='Admin'">
-    <button (click)="changeLine()" >Izmeni</button>
-</div>
-
-<div *ngIf="role==='Admin'">
-    <button (click)="deleteLine()" >Obrisi</button>
-</div>
-</td>
-</tr>
+          </agm-marker>
+          <agm-polyline [strokeColor]="polyline.color">
+            <agm-polyline-point
+              *ngFor="let point of polyline.path"
+              [latitude]="point.latitude"
+              [longitude]="point.longitude"
+            >
+            </agm-polyline-point>
+          </agm-polyline>
+        </agm-map>
+      </p>
+    </td>
+    <td>
+      <table class="table table-condensed ">
+        <tbody>
+          <tr>
+            <td>Spisak linija:</td>
+            <td>
+              <select
+                class="sirina"
+                [(ngModel)]="selectedLine"
+                (change)="changedLine()"
+              >
+                <option
+                  *ngFor="let sortedLine of sortedLines"
+                  [ngValue]="sortedLine"
+                >
+                  {{ sortedLine.Name }}
+                </option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="role === 'Admin'">
+        &nbsp;
+        <button (click)="addLine()" class="btn btn-secondary">
+          Dodaj novu
+        </button>
+        &nbsp;
+        <button (click)="changeLine()" class="btn btn-secondary">Izmeni</button>
+        &nbsp;
+        <button (click)="deleteLine()" class="btn btn-secondary">Obrisi</button>
+      </div>
+    </td>
+  </tr>
 </table>

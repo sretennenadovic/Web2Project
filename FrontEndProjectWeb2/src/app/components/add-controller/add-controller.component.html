@@ -1,10 +1,13 @@
-<div class="sidenav">
+<div id="mydiv">
+  <div class="sidenav">
     <div class="login-main-text">
-      <h2>Prijavi kontrolera</h2>
+      <h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prijavi kontrolera
+      </h2>
     </div>
   </div>
   <div class="main">
-    <div class="col-md-8 col-sm-10">
+    <div class="col-md-12 col-sm-10">
       <div class="profile-form">
         <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
           <div class="form-group row">
@@ -105,11 +108,15 @@
               </div>
             </div>
           </div>
-          <button type="submit" [disabled]="!registerForm.valid" class="btn btn-black">
+          <button
+            type="submit"
+            [disabled]="!registerForm.valid"
+            class="btn btn-black"
+          >
             Registruj kontolera
           </button>
         </form>
       </div>
     </div>
   </div>
-  
+</div>

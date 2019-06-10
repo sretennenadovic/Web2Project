@@ -1,36 +1,59 @@
-<div class="container">
-    <div class="row">
-          <div class="span12">
-<table class="table table-condensed ">
-  <tbody>
-    <tr>
-      <td>Vrsta reda voznje:</td>
-      <td><select class="sirina" [(ngModel)]="selectedScheduleType" (change)="scheduleTypeChange()">
-          <option *ngFor="let scheduleType of valuesSI.ScheduleTypes" [ngValue]="scheduleType">
-            {{scheduleType.Name}}
-          </option>
-      </select></td>
-    </tr>
-    <tr>
-      <td>Linije:</td>
-      <td><select class="sirina" [(ngModel)]="selectedL" (change)="lineChange()">
-        <ng-container *ngFor="let line of valuesSI.Lines">
-          <option [ngValue]="line">
-            {{line.Name}}
-          </option>
-          </ng-container>
-      </select></td>    
-    </tr>
-    <tr >
-      <td colspan="2">
-        {{inputSchedule}}
-      </td>
-    </tr>
-    <tr>
-      <td><button (click)="deleteSchedule()" [disabled]="inputSchedule === 'Nepostoji red voznje'" class="btn btn-secondary">Obrisi R.voznje</button></td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
+<div class="container" id="mydiv">
+  <div class="row">
+    <div class="span12">
+      <table class="table table-condensed ">
+        <tbody>
+          <tr>
+            <td>Vrsta reda voznje:</td>
+            <td>
+              <select
+                class="sirina"
+                [(ngModel)]="selectedScheduleType"
+                (change)="scheduleTypeChange()"
+              >
+                <option
+                  *ngFor="let scheduleType of valuesSI.ScheduleTypes"
+                  [ngValue]="scheduleType"
+                >
+                  {{ scheduleType.Name }}
+                </option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Linije:</td>
+            <td>
+              <select
+                class="sirina"
+                [(ngModel)]="selectedL"
+                (change)="lineChange()"
+              >
+                <ng-container *ngFor="let line of valuesSI.Lines">
+                  <option [ngValue]="line">
+                    {{ line.Name }}
+                  </option>
+                </ng-container>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              {{ inputSchedule }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button
+                (click)="deleteSchedule()"
+                [disabled]="inputSchedule === 'Nepostoji red voznje'"
+                class="btn btn-secondary"
+              >
+                Obrisi R.voznje
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

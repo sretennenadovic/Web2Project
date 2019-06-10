@@ -1,89 +1,121 @@
 <table>
-    <tr>
-      <td>
-  <p>
-    <!-- Kreiramo mapu -->
-    <agm-map [latitude]="45.242268" [longitude]="19.842954" [zoom]="18" (mapClick)="placeMarker($event)">  
-  
-      <agm-marker *ngFor="let station of stations" (markerClick)="selectedStation(station)" [latitude]="station.Latitude" [longitude]="station.Longitude" [iconUrl]="imageUrl">
-        
-        <agm-info-window [latitude]="station.Latitude" [longitude]="station.Longitude">
-          <span>
-            Ime: {{station.Name}}
-          </span>
-          <br/>
-          <span>
-            Adresa: {{station.Address}}
-          </span>
-          <br/>
-          <span>
-            Linije:
-            <ng-container *ngFor="let linesStation of station.Lines">
-            {{linesStation.Number}}
-            </ng-container>
-          </span>
-        </agm-info-window>
-  
-      </agm-marker>
-  
-      <!--*ngFor="let point of polyline.path"-->
-      <agm-marker *ngIf="Station!=undefined" [latitude]="Station.Latitude" [longitude]="Station.Longitude" [iconUrl]="imageUrl">
-      </agm-marker>
-  
-    </agm-map>
-  </p>
-  </td>
-  <td>
-    <h2>Izmeni stanicu</h2>
-    <form [formGroup]="changeStationForm" (ngSubmit)="changeStation()">
-    <table>
-      <tr>
-          <td>
-        Ime
-        </td>
-        <td>
-          <input type="text" formControlName="name"
-          required
-          class="form-control"/>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Adresa
-        </td>
-        <td>
-          <input type="text" formControlName="address"
-          required
-          class="form-control"/>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Latitude
-        </td>
-        <td>
-            <input type="text" formControlName="latitude"
-            readonly
-            class="form-control"/>
-        </td>
-      </tr>
-      <tr>
-          <td>
-            Longitude
-          </td>
-          <td>
-              <input type="text" formControlName="longitude"
-              readonly
-              class="form-control"/>
-          </td>
-        </tr>
-      <tr>
-        <td>
-            <button type="submit" [disabled]="!changeStationForm.valid">Izmeni</button>
-        </td>
-      </tr>
-  </table>
-  </form>
-  </td>
+  <tr>
+    <td>
+      <p>
+        <!-- Kreiramo mapu -->
+        <agm-map
+          [latitude]="45.242268"
+          [longitude]="19.842954"
+          [zoom]="18"
+          (mapClick)="placeMarker($event)"
+        >
+          <agm-marker
+            *ngFor="let station of stations"
+            (markerClick)="selectedStation(station)"
+            [latitude]="station.Latitude"
+            [longitude]="station.Longitude"
+            [iconUrl]="imageUrl"
+          >
+            <agm-info-window
+              [latitude]="station.Latitude"
+              [longitude]="station.Longitude"
+            >
+              <span> Ime: {{ station.Name }} </span>
+              <br />
+              <span> Adresa: {{ station.Address }} </span>
+              <br />
+              <span>
+                Linije:
+                <ng-container *ngFor="let linesStation of station.Lines">
+                  {{ linesStation.Number }}
+                </ng-container>
+              </span>
+            </agm-info-window>
+          </agm-marker>
+
+          <!--*ngFor="let point of polyline.path"-->
+          <agm-marker
+            *ngIf="Station != undefined"
+            [latitude]="Station.Latitude"
+            [longitude]="Station.Longitude"
+            [iconUrl]="imageUrl"
+          >
+          </agm-marker>
+        </agm-map>
+      </p>
+    </td>
+    <td>
+      <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Izmeni stanicu</h3>
+      <form [formGroup]="changeStationForm" (ngSubmit)="changeStation()">
+        <table>
+          <tr>
+            <td>
+              &nbsp;&nbsp;&nbsp;Ime
+            </td>
+            <td>
+              <input
+                type="text"
+                formControlName="name"
+                required
+                class="form-control"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              &nbsp;&nbsp;&nbsp;Adresa
+            </td>
+            <td>
+              <input
+                type="text"
+                formControlName="address"
+                required
+                class="form-control"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              &nbsp;&nbsp;&nbsp;Latitude
+            </td>
+            <td>
+              <input
+                type="text"
+                formControlName="latitude"
+                readonly
+                class="form-control"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              &nbsp;&nbsp;&nbsp;Longitude
+            </td>
+            <td>
+              <input
+                type="text"
+                formControlName="longitude"
+                readonly
+                class="form-control"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center">
+              <button
+                type="submit"
+                [disabled]="!changeStationForm.valid"
+                class="btn btn-secondary"
+              >
+                Izmeni
+              </button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </td>
   </tr>
-  </table>
+</table>

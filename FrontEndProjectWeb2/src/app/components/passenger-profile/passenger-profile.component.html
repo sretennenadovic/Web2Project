@@ -1,0 +1,115 @@
+<div class="main">
+  <div class="col-md-8 col-sm-10">
+    <div class="profile-form">
+      <form [formGroup]="profileForm" (ngSubmit)="change()">
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">E-mail adresa</label>
+          <div class="col-sm-6">
+            <div class="md-form mt-0">
+              <input
+                type="email"
+                formControlName="Email"
+                required
+                class="form-control"
+                placeholder="E-mail adresa"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Ime</label>
+          <div class="col-sm-6">
+            <div class="md-form mt-0">
+              <input
+                type="text"
+                formControlName="FirstName"
+                required
+                class="form-control"
+                placeholder="Ime"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Prezime</label>
+          <div class="col-sm-6">
+            <div class="md-form mt-0">
+              <input
+                type="text"
+                formControlName="LastName"
+                required
+                class="form-control"
+                placeholder="Prezime"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Datum rodjenja</label>
+          <div class="col-sm-6">
+            <div class="md-form mt-0">
+              <input
+                type="text"
+                formControlName="BirthDate"
+                required
+                class="form-control"
+                placeholder="Datum rodjenja"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Adresa</label>
+          <div class="col-sm-6">
+            <div class="md-form mt-0">
+              <input
+                type="text"
+                formControlName="Address"
+                required
+                class="form-control"
+                placeholder="Adresa"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label">Profil</label>
+          <div class="col-sm-6">
+            <div class="md-form mt-0">
+              <input
+                type="text"
+                formControlName="Approved"
+                readonly
+                class="form-control"
+                
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group row" style="margin-left: 220px; margin-top: 20px">
+          <div class="col-xs-10" style="width: 100px">
+            <div class="row">
+              <span>Regularan</span>
+              <input type="radio" name="PassengerType" value="Regularan" formControlName="PassengerType" checked="checked" class="form-control" />
+            </div>
+          </div>
+          <div class="col-xs-10" style="width: 100px">
+            <div class="row">
+              <span>Penzioner</span>
+              <input type="radio" name="PassengerType" value="Penzioner" formControlName="PassengerType" class="form-control" />
+            </div>
+          </div>
+          <div class="col-xs-10" style="width: 100px">
+            <div class="row">
+              <span>Djak/Student</span>
+              <input type="radio" name="PassengerType" value="Djak/Student" formControlName="PassengerType" class="form-control" />
+            </div>
+          </div>
+        </div>
+        <button type="submit" [disabled]="!registerForm.valid" class="btn btn-black">
+          Izmeni
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -19,4 +19,13 @@ export class AuthorizedUserHeaderComponent implements OnInit {
     this.router.navigate(['unauthorizedUser','login'])
   }
 
+  profile(){
+    if(localStorage.role==='Admin'){
+      this.router.navigate(['admin','profile'])
+    }else if(localStorage.role==='Controller'){
+      this.router.navigate(['controllor','profile'])
+    }else if(localStorage.role==='AppUser'){
+      this.router.navigate(['passenger','profile'])
+    }
+  }
 }

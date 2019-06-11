@@ -7,6 +7,7 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Description;
 using System.Web.Http.ModelBinding;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -65,6 +66,68 @@ namespace WebApp.Controllers
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
+        }
+
+        //dodao
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [ResponseType(typeof(ApplicationUser))]
+        [Route("RegularUserInfo")]
+        public IHttpActionResult GetRegularUserInfo()
+        {
+            ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
+
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext()
+                                    .GetUserManager<ApplicationUserManager>()
+                                    .FindById(User.Identity.GetUserId());
+
+
+            return Ok(user);
+
+        }
+
+        //dodao
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [ResponseType(typeof(bool))]
+        [Route("PostUserInfo")]
+        public IHttpActionResult PostUserInfo(RegisterBindingModel model)
+        {
+
+            // izvuci trenutnog korisnika
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext()
+                                    .GetUserManager<ApplicationUserManager>()
+                                    .FindById(User.Identity.GetUserId());
+
+            int UserTypeId;
+            if (model.PassengerType == "Regularan")
+            {
+                UserTypeId = 3;
+            }
+            else if (model.PassengerType == "Penzioner")
+            {
+                UserTypeId = 2;
+            }
+            else
+            {
+                UserTypeId = 1;
+            }
+
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.Address = model.Address;
+            user.BirthDate = model.BirthDate;
+            user.Email = model.Email;
+            user.PassengerTypeId = UserTypeId;
+
+            IdentityResult result = UserManager.Update(user);
+
+            if (!result.Succeeded)
+            {
+                return Ok(false);
+            }
+            else
+            {
+                return Ok(true);
+            }
         }
 
         // POST api/Account/Logout

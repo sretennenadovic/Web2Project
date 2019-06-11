@@ -6,5 +6,7 @@ export class RegisterModel {
     LastName : string;
     BirthDate : Date;
     PassengerType : string;
+    PassengerTypeId : number;
     Address : string;
+    Approved:string;
 }

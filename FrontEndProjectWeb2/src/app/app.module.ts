@@ -50,6 +50,10 @@ import { ControlorNavBarComponent } from './components/controlor-nav-bar/control
 import { ControllorValidationComponent } from './components/controllor-validation/controllor-validation.component';
 import { AddControllerComponent } from './components/add-controller/add-controller.component';
 import { PassengerNavBarComponent } from './components/passenger-nav-bar/passenger-nav-bar.component';
+import { BuyTicketsComponent } from './components/buy-tickets/buy-tickets.component';
+import { EmployeeProfileComponent } from './components/employee-profile/employee-profile.component';
+import { PassengerProfileComponent } from './components/passenger-profile/passenger-profile.component';
+import { UserProfileHttpService } from './services/profiles/user.profile.service';
 
 
 const childrenUnauthorizedRoutes: Routes = [
@@ -78,12 +82,14 @@ const childrenAdminRoutes: Routes = [
   {path: "addLine", component: AddLineComponent},
   {path: "changeLine", component: ChangeLineComponent},
   {path: "deleteLine", component: DeleteLineComponent},
-  {path: "addContr", component: AddControllerComponent}
+  {path: "addContr", component: AddControllerComponent},
+  {path: "profile", component: EmployeeProfileComponent}
 ];
 
 const childrenControlorRoutes: Routes = [
   {path: "", redirectTo: "/controllor/validation", pathMatch: "full"},
-  {path: "validation", component: ControllorValidationComponent}
+  {path: "validation", component: ControllorValidationComponent},
+  {path: "profile", component: EmployeeProfileComponent}
 ];
 
 const childrenPassengerRoutes: Routes = [
@@ -91,7 +97,9 @@ const childrenPassengerRoutes: Routes = [
   { path: "schedule", component: ScheduleComponent },
   { path: "lines", component: LinesComponent },
   { path: "vehicleLocations", component: VehicleLocationsComponent },
-  { path: "catalog", component: CatalogComponent }
+  { path: "catalog", component: CatalogComponent },
+  {path: "profile", component: PassengerProfileComponent}
+  
 ];
 
 const routes: Routes = [
@@ -155,7 +163,10 @@ const routes: Routes = [
     ControlorNavBarComponent,
     ControllorValidationComponent,
     AddControllerComponent,
-    PassengerNavBarComponent
+    PassengerNavBarComponent,
+    BuyTicketsComponent,
+    EmployeeProfileComponent,
+    PassengerProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -175,7 +186,8 @@ const routes: Routes = [
     TicketPostService,
     StationHttpService,
     LineHttpService,
-    LineTypeHttpService
+    LineTypeHttpService,
+    UserProfileHttpService
   ],
   bootstrap: [AppComponent]
 })

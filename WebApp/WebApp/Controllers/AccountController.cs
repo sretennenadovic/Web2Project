@@ -55,17 +55,17 @@ namespace WebApp.Controllers
 
         // GET api/Account/UserInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [ResponseType(typeof(ApplicationUser))]
         [Route("UserInfo")]
-        public UserInfoViewModel GetUserInfo()
+        public IHttpActionResult GetUserInfo()
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
 
-            return new UserInfoViewModel
-            {
-                Email = User.Identity.GetUserName(),
-                HasRegistered = externalLogin == null,
-                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
-            };
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext()
+                                    .GetUserManager<ApplicationUserManager>()
+                                    .FindById(User.Identity.GetUserId());
+
+            return Ok(user);
         }
 
         //dodao
@@ -116,7 +116,38 @@ namespace WebApp.Controllers
             user.Address = model.Address;
             user.BirthDate = model.BirthDate;
             user.Email = model.Email;
+            user.UserName = model.Email;
             user.PassengerTypeId = UserTypeId;
+
+            IdentityResult result = UserManager.Update(user);
+
+            if (!result.Succeeded)
+            {
+                return Ok(false);
+            }
+            else
+            {
+                return Ok(true);
+            }
+        }
+
+        //dodao
+        [Authorize(Roles ="Admin,Controller")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [ResponseType(typeof(bool))]
+        [Route("PostAdminInfo")]
+        public IHttpActionResult PostAdminInfo(RegisterBindingModel model)
+        {
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext()
+                                    .GetUserManager<ApplicationUserManager>()
+                                    .FindById(User.Identity.GetUserId());
+
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.Address = model.Address;
+            user.BirthDate = model.BirthDate;
+            user.Email = model.Email;
+            user.UserName = model.Email;
 
             IdentityResult result = UserManager.Update(user);
 

@@ -15,6 +15,7 @@ using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
+    [AllowAnonymous]
     public class CatalogsController : ApiController
     {
         private IUnitOfWork db;
@@ -43,6 +44,7 @@ namespace WebApp.Controllers
             return Ok(catalog);
         }
 
+        [Authorize(Roles ="Admin")]
         // PUT: api/Catalogs/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutCatalog(int id, Catalog catalog)
@@ -78,6 +80,7 @@ namespace WebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [Authorize(Roles = "Admin")]
         // POST: api/Catalogs
         [ResponseType(typeof(Catalog))]
         public IHttpActionResult PostCatalog(Catalog catalog)
@@ -93,6 +96,7 @@ namespace WebApp.Controllers
             return CreatedAtRoute("DefaultApi", new { id = catalog.Id }, catalog);
         }
 
+        [Authorize(Roles = "Admin")]
         // DELETE: api/Catalogs/5
         [ResponseType(typeof(Catalog))]
         public IHttpActionResult DeleteCatalog(int id)

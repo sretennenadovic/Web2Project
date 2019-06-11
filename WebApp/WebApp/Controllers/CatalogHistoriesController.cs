@@ -14,6 +14,7 @@ using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
+    [AllowAnonymous]
     public class CatalogHistoriesController : ApiController
     {
         private IUnitOfWork db;
@@ -42,6 +43,7 @@ namespace WebApp.Controllers
             return Ok(catalogHistory);
         }
 
+        [Authorize(Roles ="Admin")]
         // PUT: api/CatalogHistories/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutCatalogHistory(int id, CatalogHistory catalogHistory)
@@ -77,6 +79,7 @@ namespace WebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [Authorize(Roles = "Admin")]
         // POST: api/CatalogHistories
         [ResponseType(typeof(CatalogHistory))]
         public IHttpActionResult PostCatalogHistory(CatalogHistory catalogHistory)
@@ -92,6 +95,7 @@ namespace WebApp.Controllers
             return CreatedAtRoute("DefaultApi", new { id = catalogHistory.Id }, catalogHistory);
         }
 
+        [Authorize(Roles = "Admin")]
         // DELETE: api/CatalogHistories/5
         [ResponseType(typeof(CatalogHistory))]
         public IHttpActionResult DeleteCatalogHistory(int id)

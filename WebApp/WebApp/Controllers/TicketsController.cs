@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Mail;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebApp.Models;
@@ -16,6 +19,7 @@ using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
+    [AllowAnonymous]
     public class TicketsController : ApiController
     {
         private IUnitOfWork db;
@@ -44,6 +48,7 @@ namespace WebApp.Controllers
             return Ok(ticket);
         }
 
+        [Authorize(Roles = "Admin")]
         // PUT: api/Tickets/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutTicket(int id, Ticket ticket)
@@ -79,21 +84,39 @@ namespace WebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [Authorize]
         // POST: api/Tickets
-        [ResponseType(typeof(Ticket))]
+        [ResponseType(typeof(bool))]
         public IHttpActionResult PostTicket(Ticket ticket)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-          
-            db.Tickets.Add(ticket);
-            db.Complete();
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext()
+                                    .GetUserManager<ApplicationUserManager>()
+                                    .FindById(User.Identity.GetUserId());
 
-            return CreatedAtRoute("DefaultApi", new { id = ticket.Id }, ticket);
+            if (user.Approved)
+            {
+
+                Ticket newTicket = new Ticket();
+                newTicket.ApplicationUserId = user.Id;
+                newTicket.IsValid = true;
+                newTicket.TimeIssued = DateTime.Now;
+                newTicket.TicketTypeId = ticket.TicketTypeId;
+
+                int catalogId = db.Catalogs.Find(x => x.ValidFrom < DateTime.Now && x.ValidTo == null).FirstOrDefault().Id;
+                newTicket.CatalogHistoryId = db.CatalogHistories.Find(x => x.TicketTypeId == ticket.TicketTypeId && x.CatalogId == catalogId).FirstOrDefault().Id;
+
+                db.Tickets.Add(newTicket);
+                db.Complete();
+
+                return Ok(true);
+            }
+            else
+            {
+                return Ok(false);
+            }          
         }
 
+        [Authorize(Roles = "Admin")]
         // DELETE: api/Tickets/5
         [ResponseType(typeof(Ticket))]
         public IHttpActionResult DeleteTicket(int id)
@@ -171,7 +194,7 @@ namespace WebApp.Controllers
             ticket.IsValid = true;
             ticket.TicketTypeId = db.TicketTypes.Find(x => x.Name.Equals("Vremenska")).FirstOrDefault().Id;
             ticket.ApplicationUserId = null;
-            int catalog = db.Catalogs.Find(x => x.ValidFrom < DateTime.Now && x.ValidTo > DateTime.Now).FirstOrDefault().Id;
+            int catalog = db.Catalogs.Find(x => x.ValidFrom < DateTime.Now && x.ValidTo == null).FirstOrDefault().Id;
             ticket.CatalogHistoryId = db.CatalogHistories.Find(x => x.TicketTypeId == ticket.TicketTypeId && x.CatalogId == catalog).FirstOrDefault().Id;
             ticket.TimeIssued = DateTime.Now;
          

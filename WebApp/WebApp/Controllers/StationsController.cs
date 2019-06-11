@@ -14,6 +14,7 @@ using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
+    [AllowAnonymous]
     public class StationsController : ApiController
     {
         private IUnitOfWork db;
@@ -42,6 +43,7 @@ namespace WebApp.Controllers
             return Ok(station);
         }
 
+        [Authorize(Roles = "Admin")
         // PUT: api/Stations/5
         [ResponseType(typeof(bool))]
         public IHttpActionResult PutStation(int id, Station station)
@@ -83,6 +85,7 @@ namespace WebApp.Controllers
             return Ok(true);
         }
 
+        [Authorize(Roles = "Admin")]
         // POST: api/Stations
         [ResponseType(typeof(bool))]
         public IHttpActionResult PostStation(Station station)
@@ -98,6 +101,7 @@ namespace WebApp.Controllers
             return Ok(true);
         }
 
+        [Authorize(Roles = "Admin")]
         // DELETE: api/Stations/5
         [ResponseType(typeof(bool))]
         public IHttpActionResult DeleteStation(int id)

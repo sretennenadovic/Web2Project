@@ -14,6 +14,7 @@ using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
+    [AllowAnonymous]
     public class TicketTypesController : ApiController
     {
         private IUnitOfWork db;
@@ -42,6 +43,7 @@ namespace WebApp.Controllers
             return Ok(ticketType);
         }
 
+        [Authorize(Roles = "Admin")]
         // PUT: api/TicketTypes/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutTicketType(int id, TicketType ticketType)
@@ -77,6 +79,7 @@ namespace WebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [Authorize(Roles = "Admin")]
         // POST: api/TicketTypes
         [ResponseType(typeof(TicketType))]
         public IHttpActionResult PostTicketType(TicketType ticketType)
@@ -92,6 +95,7 @@ namespace WebApp.Controllers
             return CreatedAtRoute("DefaultApi", new { id = ticketType.Id }, ticketType);
         }
 
+        [Authorize(Roles = "Admin")]
         // DELETE: api/TicketTypes/5
         [ResponseType(typeof(TicketType))]
         public IHttpActionResult DeleteTicketType(int id)

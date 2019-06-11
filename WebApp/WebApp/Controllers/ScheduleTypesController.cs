@@ -14,6 +14,7 @@ using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
+    [AllowAnonymous]
     public class ScheduleTypesController : ApiController
     {
         private IUnitOfWork db;
@@ -42,6 +43,7 @@ namespace WebApp.Controllers
             return Ok(scheduleType);
         }
 
+        [Authorize(Roles = "Admin")]
         // PUT: api/ScheduleTypes/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutScheduleType(int id, ScheduleType scheduleType)
@@ -77,6 +79,7 @@ namespace WebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [Authorize(Roles = "Admin")]
         // POST: api/ScheduleTypes
         [ResponseType(typeof(ScheduleType))]
         public IHttpActionResult PostScheduleType(ScheduleType scheduleType)
@@ -92,6 +95,7 @@ namespace WebApp.Controllers
             return CreatedAtRoute("DefaultApi", new { id = scheduleType.Id }, scheduleType);
         }
 
+        [Authorize(Roles = "Admin")]
         // DELETE: api/ScheduleTypes/5
         [ResponseType(typeof(ScheduleType))]
         public IHttpActionResult DeleteScheduleType(int id)

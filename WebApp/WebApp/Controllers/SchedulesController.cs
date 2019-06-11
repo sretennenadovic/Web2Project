@@ -15,6 +15,7 @@ using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
+    [AllowAnonymous]
     public class SchedulesController : ApiController
     {
         private IUnitOfWork db;
@@ -43,6 +44,7 @@ namespace WebApp.Controllers
             return Ok(schedule);
         }
 
+        [Authorize(Roles = "Admin")]
         // PUT: api/Schedules/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutSchedule(int id, Schedule schedule)
@@ -78,6 +80,7 @@ namespace WebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [Authorize(Roles = "Admin")]
         // POST: api/Schedules
         [ResponseType(typeof(bool))]
         public IHttpActionResult PostSchedule(Schedule schedule)
@@ -101,6 +104,7 @@ namespace WebApp.Controllers
             return Ok(true);
         }
 
+        [Authorize(Roles = "Admin")]
         // DELETE: api/Schedules/5
         [ResponseType(typeof(Schedule))]
         public IHttpActionResult DeleteSchedule(int id)
@@ -124,10 +128,6 @@ namespace WebApp.Controllers
 
             ScheduleInfo s = new ScheduleInfo();
             s.Lines = db.Lines.GetAll();
-            /*foreach (var item in s.Lines)
-            {
-                item.Schedules = db.Schedules.Find(f => f.LineId == item.Id).ToList();
-            }*/
             s.LineTypes = db.LineTypes.GetAll();
             s.ScheduleTypes = db.ScheduleTypes.GetAll();
 

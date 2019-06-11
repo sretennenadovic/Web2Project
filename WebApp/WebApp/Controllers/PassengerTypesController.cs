@@ -14,6 +14,7 @@ using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
+    [AllowAnonymous]
     public class PassengerTypesController : ApiController
     {
         private IUnitOfWork db;
@@ -42,6 +43,8 @@ namespace WebApp.Controllers
             return Ok(passengerType);
         }
 
+
+        [Authorize(Roles = "Admin")]
         // PUT: api/PassengerTypes/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPassengerType(int id, PassengerType passengerType)
@@ -77,6 +80,7 @@ namespace WebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [Authorize(Roles = "Admin")]
         // POST: api/PassengerTypes
         [ResponseType(typeof(PassengerType))]
         public IHttpActionResult PostPassengerType(PassengerType passengerType)
@@ -92,6 +96,7 @@ namespace WebApp.Controllers
             return CreatedAtRoute("DefaultApi", new { id = passengerType.Id }, passengerType);
         }
 
+        [Authorize(Roles = "Admin")]
         // DELETE: api/PassengerTypes/5
         [ResponseType(typeof(PassengerType))]
         public IHttpActionResult DeletePassengerType(int id)

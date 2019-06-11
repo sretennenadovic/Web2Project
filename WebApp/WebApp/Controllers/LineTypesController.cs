@@ -14,6 +14,7 @@ using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
+    [AllowAnonymous]
     public class LineTypesController : ApiController
     {
         private IUnitOfWork db;
@@ -42,6 +43,7 @@ namespace WebApp.Controllers
             return Ok(lineType);
         }
 
+        [Authorize(Roles = "Admin")]
         // PUT: api/LineTypes/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutLineType(int id, LineType lineType)
@@ -77,6 +79,7 @@ namespace WebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [Authorize(Roles = "Admin")]
         // POST: api/LineTypes
         [ResponseType(typeof(LineType))]
         public IHttpActionResult PostLineType(LineType lineType)
@@ -92,6 +95,7 @@ namespace WebApp.Controllers
             return CreatedAtRoute("DefaultApi", new { id = lineType.Id }, lineType);
         }
 
+        [Authorize(Roles = "Admin")]
         // DELETE: api/LineTypes/5
         [ResponseType(typeof(LineType))]
         public IHttpActionResult DeleteLineType(int id)

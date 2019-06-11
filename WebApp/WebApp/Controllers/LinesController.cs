@@ -15,6 +15,7 @@ using System.Data.Entity.Migrations;
 
 namespace WebApp.Controllers
 {
+    [AllowAnonymous]
     public class LinesController : ApiController
     {
         private IUnitOfWork db;
@@ -43,6 +44,7 @@ namespace WebApp.Controllers
             return Ok(line);
         }
 
+        [Authorize(Roles = "Admin")]
         // PUT: api/Lines/5
         [ResponseType(typeof(bool))]
         public IHttpActionResult PutLine(int id, Line line)
@@ -94,7 +96,8 @@ namespace WebApp.Controllers
 
             return Ok(true);
         }
-        
+
+        [Authorize(Roles = "Admin")]
         // POST: api/Lines
         [ResponseType(typeof(bool))]
         public IHttpActionResult PostLine(Line line)
@@ -126,6 +129,7 @@ namespace WebApp.Controllers
             return Ok(true);
         }
 
+        [Authorize(Roles = "Admin")]
         // DELETE: api/Lines/5
         [ResponseType(typeof(bool))]
         public IHttpActionResult DeleteLine(int id)

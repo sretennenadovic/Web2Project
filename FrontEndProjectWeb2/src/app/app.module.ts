@@ -98,7 +98,8 @@ const childrenPassengerRoutes: Routes = [
   { path: "lines", component: LinesComponent },
   { path: "vehicleLocations", component: VehicleLocationsComponent },
   { path: "catalog", component: CatalogComponent },
-  {path: "profile", component: PassengerProfileComponent}
+  {path: "profile", component: PassengerProfileComponent},
+  {path: "buyTicket", component: BuyTicketsComponent}
   
 ];
 

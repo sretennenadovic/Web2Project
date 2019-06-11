@@ -1,3 +1,11 @@
-<p>
-  buy-tickets works!
-</p>
+<select
+    [(ngModel)]="selectedTicketType"
+    (change)="changeOfTicketType()">
+  <option
+    *ngFor="let ticketType of TicketTypes"
+    [ngValue]="ticketType">
+    {{ ticketType.Name }}
+  </option>
+</select>
+
+<button (click)="buy()">Kupi kartu</button>

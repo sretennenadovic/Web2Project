@@ -43,7 +43,7 @@ namespace WebApp.Controllers
             return Ok(station);
         }
 
-        [Authorize(Roles = "Admin")
+        [Authorize(Roles = "Admin")]
         // PUT: api/Stations/5
         [ResponseType(typeof(bool))]
         public IHttpActionResult PutStation(int id, Station station)

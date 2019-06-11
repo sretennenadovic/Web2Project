@@ -225,6 +225,31 @@ namespace WebApp.Controllers
             smtpserver.Send(mail);
         }
 
+        [Route("api/Tickets/GetTicketHistory")]
+        [ResponseType(typeof(TicketHistory))]
+        public IHttpActionResult GetTicketHistory()
+        {
+            TicketHistory th = new TicketHistory();
+
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext()
+                                   .GetUserManager<ApplicationUserManager>()
+                                   .FindById(User.Identity.GetUserId());
+
+            th.Tickets = db.Tickets.Find(x => x.ApplicationUserId.Equals(user.Id)).ToList();
+            th.TicketTypes = db.TicketTypes.GetAll().ToList();
+
+            return Ok(th);
+        }
+
+        
+        [Route("api/Tickets/GetTicketPrice/{idCh}/{idTt}")]
+        [ResponseType(typeof(float))]
+        public IHttpActionResult GetTicketPrice(int idCh, int idTt)
+        {
+            float price = db.CatalogHistories.Find(x => x.TicketTypeId == idTt && x.Id == idCh).FirstOrDefault().TicketPrice;
+            return Ok(price);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

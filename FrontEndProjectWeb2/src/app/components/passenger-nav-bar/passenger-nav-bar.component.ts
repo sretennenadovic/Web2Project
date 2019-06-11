@@ -32,5 +32,8 @@ export class PassengerNavBarComponent implements OnInit {
   buyTicket(){
     this.router.navigate(['passenger','buyTicket'])
   }
-
+  
+  ticketHistory(){
+    this.router.navigate(['passenger','ticketHistory'])
+  }
 }

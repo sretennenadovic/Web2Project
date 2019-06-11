@@ -1,0 +1,10 @@
+<h3>Istorija vasih karti!</h3>
+Klikom na neku kartu, dobicete informacije o ceni karte!
+<div *ngIf="selectedTicketId!==undefined&&selectedTicketId!==null">
+  <h3 class="color">Cena karte ID: {{selectedTicketId}}, je {{ticketPrice}}</h3>
+</div>
+<ul>
+    <br/>
+  <li *ngFor="let ticket of ticketHistory.Tickets" (click)="selectTicket(ticket)">Karta ID: <b>{{ticket.Id}}</b>, tip: <i><u>{{ticket.TicketType.Name}}</u></i>, kupljena {{ticket.TimeIssued}}</li>
+</ul>
+

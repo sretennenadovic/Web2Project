@@ -44,4 +44,8 @@ export class BaseHttpService<T> {
   getSheduleForSelectedLine(idLine:number,idScheduleType:number):Observable<T>{
     return this.http.get<T>(this.baseUrl + this.specificUrl + `/${idLine}/${idScheduleType}`);
   }
+
+  getTicketPrice(idCh:number,idTt:number):Observable<T>{
+    return this.http.get<T>(this.baseUrl + this.specificUrl + `/${idCh}/${idTt}`);
+  }
 }

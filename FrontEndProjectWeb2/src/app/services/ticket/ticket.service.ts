@@ -20,3 +20,13 @@ export class TicketValidationHttpService extends BaseHttpService<any> {
 export class TicketTypeSrvice extends BaseHttpService<any>{
     specificUrl = "/api/TicketTypes";
 }
+
+@Injectable()
+export class TicketHistorySrvice extends BaseHttpService<any>{
+    specificUrl = "/api/Tickets/GetTicketHistory";
+}
+
+@Injectable()
+export class TicketHistoryPriceSrvice extends BaseHttpService<any>{
+    specificUrl = "/api/Tickets/GetTicketPrice";
+}

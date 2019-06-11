@@ -353,6 +353,7 @@
     <Compile Include="Models\BindingModels\CatalogInfo.cs" />
     <Compile Include="Models\BindingModels\NewCatalog.cs" />
     <Compile Include="Models\BindingModels\ScheduleInfo.cs" />
+    <Compile Include="Models\BindingModels\TicketHistory.cs" />
     <Compile Include="Models\BindingModels\TicketPrices.cs" />
     <Compile Include="Models\BindingModels\TicketUnauthorized.cs" />
     <Compile Include="Models\Catalog.cs" />

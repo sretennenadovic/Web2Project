@@ -54,6 +54,7 @@ import { BuyTicketsComponent } from './components/buy-tickets/buy-tickets.compon
 import { EmployeeProfileComponent } from './components/employee-profile/employee-profile.component';
 import { PassengerProfileComponent } from './components/passenger-profile/passenger-profile.component';
 import { UserProfileHttpService } from './services/profiles/user.profile.service';
+import { TicketHistoryComponent } from './components/ticket-history/ticket-history.component';
 
 
 const childrenUnauthorizedRoutes: Routes = [
@@ -99,7 +100,8 @@ const childrenPassengerRoutes: Routes = [
   { path: "vehicleLocations", component: VehicleLocationsComponent },
   { path: "catalog", component: CatalogComponent },
   {path: "profile", component: PassengerProfileComponent},
-  {path: "buyTicket", component: BuyTicketsComponent}
+  {path: "buyTicket", component: BuyTicketsComponent},
+  {path: "ticketHistory", component: TicketHistoryComponent}
   
 ];
 
@@ -167,7 +169,8 @@ const routes: Routes = [
     PassengerNavBarComponent,
     BuyTicketsComponent,
     EmployeeProfileComponent,
-    PassengerProfileComponent
+    PassengerProfileComponent,
+    TicketHistoryComponent
   ],
   imports: [
     BrowserModule,

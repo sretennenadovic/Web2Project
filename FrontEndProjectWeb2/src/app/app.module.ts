@@ -55,6 +55,7 @@ import { EmployeeProfileComponent } from './components/employee-profile/employee
 import { PassengerProfileComponent } from './components/passenger-profile/passenger-profile.component';
 import { UserProfileHttpService } from './services/profiles/user.profile.service';
 import { TicketHistoryComponent } from './components/ticket-history/ticket-history.component';
+import { RequestsComponent } from './requests/requests.component';
 
 
 const childrenUnauthorizedRoutes: Routes = [
@@ -170,7 +171,8 @@ const routes: Routes = [
     BuyTicketsComponent,
     EmployeeProfileComponent,
     PassengerProfileComponent,
-    TicketHistoryComponent
+    TicketHistoryComponent,
+    RequestsComponent
   ],
   imports: [
     BrowserModule,

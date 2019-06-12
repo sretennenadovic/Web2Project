@@ -6,6 +6,8 @@ import { Polyline } from 'src/app/models/map/polyline';
 import { Validators, FormBuilder } from '@angular/forms';
 import { StationHttpService } from 'src/app/services/station/station.service';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-change-station',
@@ -64,6 +66,9 @@ export class ChangeStationComponent implements OnInit {
       }else{
         alert("Doslo je do greske pri izmeni!")
       }
-    })
+    }
+    ,err=> alert(err.error.Message))
   }
+
+ 
 }

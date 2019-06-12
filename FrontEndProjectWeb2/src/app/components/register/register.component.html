@@ -129,6 +129,9 @@
             </div>
           </div>
         </div>
+        <div *ngIf="registerForm.get('PassengerType').value != 'Regular'" class="form-group row">
+          <input type="file" formControlName="Picture" (change)="onFileSelected($event)" />
+        </div>
         <button type="submit" [disabled]="!registerForm.valid" class="btn btn-black">
           Registruj se
         </button>

@@ -330,7 +330,6 @@ C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.Cat
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.CatalogUpdateMigrationAgain.resources
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.CatalogUpdateMigrationAgainAgain.resources
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.UpdatedAppUser.resources
-C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache
 C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.orderAdded.resources
 C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache
 C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migrations.CatalogUpdateMigration.resources
@@ -338,3 +337,6 @@ C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migration
 C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migrations.CatalogUpdateMigrationAgainAgain.resources
 C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migrations.UpdatedAppUser.resources
 C:\Users\Aleksandar\Desktop\Web2Project\WebApp\WebApp\obj\Debug\WebApp.Migrations.orderAdded.resources
+C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.TransactionStation.resources
+C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.Migrations.TransactionLine.resources
+C:\Users\PC\Desktop\Web2ProjectGit\WebApp\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache

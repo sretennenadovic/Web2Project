@@ -23,6 +23,8 @@ namespace WebApp.Models
         public List<Vehicle> Vehicles { get; set; }
         public List<Schedule> Schedules { get; set; }
         public string Order { get; set; }
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
 
     }
 }

@@ -48,4 +48,8 @@ export class BaseHttpService<T> {
   getTicketPrice(idCh:number,idTt:number):Observable<T>{
     return this.http.get<T>(this.baseUrl + this.specificUrl + `/${idCh}/${idTt}`);
   }
+
+  postPicture(data: any, id: string, options?: any):Observable<any>{
+    return this.http.post<any>(this.baseUrl+this.specificUrl+`/${id}`,data,options);
+  }
 }

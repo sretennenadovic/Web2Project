@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Register } from 'src/app/services/registration/register.service';
+import { Register, UploadImage } from 'src/app/services/registration/register.service';
 import { RegisterModel } from 'src/app/models/RegisterModel';
 import { Router } from '@angular/router';
 
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  providers:[Register]
+  providers:[Register,UploadImage]
 })
 export class RegisterComponent implements OnInit {
 
@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   onFileSelected(event) {
     this.selectedFile = <File>event.target.files[0];
   }
+  get f() { return this.registerForm.controls; }
 
   registerForm = this.fb.group({
     Email: ['',[Validators.required,Validators.minLength(6)]],
@@ -25,10 +26,12 @@ export class RegisterComponent implements OnInit {
     LastName: ['',Validators.required],
     BirthDate: ['', Validators.required],
     PassengerType: ['', Validators.required],
-    Address: ['', Validators.required]
+    Address: ['', Validators.required],
+    Picture: ['']
   })
 
-  constructor(private fb: FormBuilder, private register:Register, private router:Router) { }
+  constructor(private fb: FormBuilder, private register:Register, private router:Router,
+              private uploadImage:UploadImage) { }
 
   ngOnInit() {
   }
@@ -56,14 +59,14 @@ export class RegisterComponent implements OnInit {
     this.register.post(regModel).subscribe(
       ret => {
 
-      /*  if (this.selectedFile != null) {
-          this.accountService.uploadImage(formData, regModel.username, options).subscribe(ret => {
-            alert("Succesfully registered!");
+    /*    if (this.selectedFile != null) {
+          this.uploadImage.postPicture(formData, regModel.Email, options).subscribe(ret => {
+            alert("Uspesno ste se registrovali!");
             this.router.navigate(['unauthorizedUser','login']);
           },
             err => console.log(err));
-        }*/
-       // else {
+        }
+        else {*/
           alert("Uspesno ste se registrovali!");
           this.router.navigate(['unauthorizedUser','login']);
        // }

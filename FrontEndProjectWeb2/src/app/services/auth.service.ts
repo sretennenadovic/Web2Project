@@ -58,6 +58,7 @@ export class AuthService {
 
   logout(): void {
     this.isLoggedIn = false;
+    localStorage.removeItem('role');
     localStorage.removeItem('jwt');
   }
 

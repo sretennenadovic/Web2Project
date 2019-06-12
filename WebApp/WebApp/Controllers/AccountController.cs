@@ -440,13 +440,10 @@ namespace WebApp.Controllers
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
-
-
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
             }
-
 
             result = await UserManager.AddToRoleAsync(user.Id, "AppUser");
             if (!result.Succeeded)
@@ -490,8 +487,9 @@ namespace WebApp.Controllers
 
 
         //upload slike
-    /*    [Route("api/Account/PostUplaodImage")]
-        [AllowAnonymous]
+     /*   [AllowAnonymous]
+        [Route("PostUploadImage/{id}")]
+        
         public IHttpActionResult PostUploadImage(string id)
         {
             var httpRequest = HttpContext.Current.Request;
@@ -503,7 +501,9 @@ namespace WebApp.Controllers
                     foreach (string file in httpRequest.Files)
                     {
 
-                       // Passenger passenger = UnitOfWork.PassengerRepository.Get(id);
+                        ApplicationUser passenger = System.Web.HttpContext.Current.GetOwinContext()
+                                    .GetUserManager<ApplicationUserManager>()
+                                    .FindByEmail(id + ".com");
 
                         if (passenger == null)
                         {
@@ -512,23 +512,16 @@ namespace WebApp.Controllers
 
                         if (passenger.ImageUrl != null)
                         {
-                            File.Delete(HttpContext.Current.Server.MapPath("~/UploadUserImages/" + passenger.ImageUrl));
+                            File.Delete(HttpContext.Current.Server.MapPath("~/UploadedDoc/" + passenger.ImageUrl));
                         }
 
 
 
                         var postedFile = httpRequest.Files[file];
                         string fileName = id + "_" + postedFile.FileName;
-                        var filePath = HttpContext.Current.Server.MapPath("~/UploadFile/" + fileName);
-
-
-
+                        var filePath = HttpContext.Current.Server.MapPath("~/UploadedDoc/" + fileName);
 
                         passenger.ImageUrl = fileName;
-                        passenger.Type = "Regular";
-                        UnitOfWork.PassengerRepository.Update(passenger);
-                        UnitOfWork.Complete();
-
 
                         postedFile.SaveAs(filePath);
                     }
@@ -544,7 +537,7 @@ namespace WebApp.Controllers
             {
                 return InternalServerError(e);
             }
-
+            
         }*/
 
         // POST api/Account/RegisterExternal

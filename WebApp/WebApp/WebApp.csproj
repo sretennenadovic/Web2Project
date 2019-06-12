@@ -345,6 +345,14 @@
     <Compile Include="Migrations\201906091843218_orderAdded.Designer.cs">
       <DependentUpon>201906091843218_orderAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906121545002_TransactionStation.cs" />
+    <Compile Include="Migrations\201906121545002_TransactionStation.Designer.cs">
+      <DependentUpon>201906121545002_TransactionStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906121827075_TransactionLine.cs" />
+    <Compile Include="Migrations\201906121827075_TransactionLine.Designer.cs">
+      <DependentUpon>201906121827075_TransactionLine.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -464,6 +472,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="UploadedDoc\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -551,6 +560,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906091843218_orderAdded.resx">
       <DependentUpon>201906091843218_orderAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906121545002_TransactionStation.resx">
+      <DependentUpon>201906121545002_TransactionStation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906121827075_TransactionLine.resx">
+      <DependentUpon>201906121827075_TransactionLine.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

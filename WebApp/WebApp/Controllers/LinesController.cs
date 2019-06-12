@@ -67,31 +67,21 @@ namespace WebApp.Controllers
             }
 
             var l = db.Lines.Get(line.Id);
-            l.Stations.Clear();
-            db.Complete();
 
             l.Name = line.Name;
             l.LineTypeId = line.LineTypeId;
             l.Number = line.Number;
             l.Stations = stations;
             l.Order = line.Order;
+            l.RowVersion = line.RowVersion;
 
             db.Lines.Update(l);
 
-            try
+            int result = db.Complete();
+
+            if (result == -1)
             {
-                db.Complete();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LineExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest("Neko je izmenio podatke u medjuvremenu! Pokusaj kasnije!");
             }
 
             return Ok(true);

@@ -118,18 +118,20 @@ export class ChangeLineComponent implements OnInit {
 
   changeLine(){
     if(this.lineChanged.Stations.length >= 2){
-      this.lineChanged.Name = this.changeLineForm.value.name;
-      this.lineChanged.Number = this.changeLineForm.value.number;
-      this.lineChanged.LineTypeId = this.changeLineForm.value.type.Id;
-      this.lineChanged.Id = this.selectedLine.Id;
+      this.selectedLine.Name = this.changeLineForm.value.name;
+     this.selectedLine.Number = this.changeLineForm.value.number;
+      this.selectedLine.LineTypeId = this.changeLineForm.value.type.Id;
+      this.selectedLine.Id = this.selectedLine.Id;
+      this.selectedLine.Order = this.lineChanged.Order
+      this.selectedLine.Stations = this.lineChanged.Stations
       console.log(this.lineChanged);
-      this.lineHttp.put(this.lineChanged, this.selectedLine.Id).subscribe(data =>{
+      this.lineHttp.put(this.selectedLine, this.selectedLine.Id).subscribe(data =>{
         if(data){
           alert("Uspesno ste izmenili liniju!")
         }else{
           alert("Doslo je do greske pri izmeni!")
         }
-      })
+      },err=> alert(err.error.Message))
     }else{
       alert("Liniju moraju ciniti minimum 2 stanice!")
     }

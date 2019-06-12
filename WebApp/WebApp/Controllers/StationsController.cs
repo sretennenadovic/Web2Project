@@ -63,23 +63,15 @@ namespace WebApp.Controllers
             s.Latitude = station.Latitude;
             s.Longitude = station.Longitude;
             s.Name = station.Name;
+            s.RowVersion = station.RowVersion;
 
             db.Stations.Update(s);
 
-            try
+            int result = db.Complete();
+
+            if(result == -1)
             {
-                db.Complete();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!StationExists(id))
-                {
-                    return Ok(false);
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest("Neko je izmenio podatke u medjuvremenu! Pokusaj kasnije!");
             }
 
             return Ok(true);

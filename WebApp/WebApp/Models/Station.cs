@@ -19,5 +19,7 @@ namespace WebApp.Models
         public string Address { get; set; }
 
         public List<Line> Lines { get; set; }
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
     }
 }

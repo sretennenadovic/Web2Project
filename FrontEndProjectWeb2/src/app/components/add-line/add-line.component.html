@@ -32,7 +32,7 @@
   </p>
 
   </td>
-  <td>
+  <td align="center">
 
   <form [formGroup]="addLineForm" (ngSubmit)="addLine()">
       <table>
@@ -69,7 +69,8 @@
       </td>
     </tr>
     </table>
-    <button type="submit" [disabled]="!addLineForm.valid">Dodaj</button>
+    <br/>
+    <button type="submit" [disabled]="!addLineForm.valid" class="btn btn-secondary">Dodaj</button>
   </form>
   </td>
   </tr>

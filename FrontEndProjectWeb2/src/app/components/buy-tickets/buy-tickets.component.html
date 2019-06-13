@@ -1,4 +1,7 @@
-<select
+
+<h3>Odaberite vrstu karte za kupovinu</h3>
+<br/>
+<select class="sirina"
     [(ngModel)]="selectedTicketType"
     (change)="changeOfTicketType()">
   <option
@@ -7,5 +10,5 @@
     {{ ticketType.Name }}
   </option>
 </select>
-
-<button (click)="buy()">Kupi kartu</button>
+&nbsp;
+<button (click)="buy()" class="btn btn-secondary">Kupi kartu</button>

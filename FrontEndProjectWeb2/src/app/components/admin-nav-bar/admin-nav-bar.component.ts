@@ -33,4 +33,8 @@ export class AdminNavBarComponent implements OnInit {
     this.router.navigate(['admin','addContr'])
   }
 
+  requests(){
+    this.router.navigate(['admin','validateProfile'])
+  }
+
 }

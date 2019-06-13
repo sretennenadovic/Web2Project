@@ -1,5 +1,5 @@
 Datum od:
-<input type="date" [(ngModel)]="dateFrom">
+<input class="form-control" id="datum" type="date" [(ngModel)]="dateFrom">
 
 <table>
   <thead>
@@ -12,10 +12,13 @@ Datum od:
     <tr *ngFor="let ticketType of values.TicketTypes">
       <td>{{ticketType.Name}}</td>
       <ng-container *ngFor="let price of values.CatalogHistory">
-          <input type="number" *ngIf="price.TicketTypeId == ticketType.Id" [(ngModel)]="price.TicketPrice"/>
+          <input class="form-control" type="number" *ngIf="price.TicketTypeId == ticketType.Id" [(ngModel)]="price.TicketPrice"/>
       </ng-container>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
     </tr>
   </tbody>
 </table>
 
-<button (click)= "addCatalog(values)">Dodaj cenovnik</button>
+<button (click)= "addCatalog(values)" class="btn btn-secondary">Dodaj cenovnik</button>

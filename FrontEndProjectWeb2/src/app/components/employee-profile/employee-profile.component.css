@@ -1,0 +1,14 @@
+#mydiv {
+    position: fixed;
+    top: 35%;
+    left: 55%;
+    width: 30em;
+    height: 22em;
+    margin-top: -9em; /*set to a negative number 1/2 of your height*/
+    margin-left: -15em; /*set to a negative number 1/2 of your width*/
+  }
+
+  .btn-secondary{
+    width: 150px;
+  }
+  

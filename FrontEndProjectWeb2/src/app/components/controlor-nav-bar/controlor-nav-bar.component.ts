@@ -17,4 +17,8 @@ export class ControlorNavBarComponent implements OnInit {
     this.router.navigate(['controllor','validation'])
   }
 
+  requests(){
+    this.router.navigate(['controllor','validateProfile'])
+  }
+
 }

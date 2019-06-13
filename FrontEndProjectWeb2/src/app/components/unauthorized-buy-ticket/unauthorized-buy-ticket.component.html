@@ -1,7 +1,11 @@
+
 <h2>
   Ovde mozete kupiti vremensku kartu.
 </h2>
-
+<div id="mydiv">
+<table>
+  <tr>
+    <td align="center">
 <form [formGroup]="buyOneTimeTicketForm" (ngSubmit)="buyOneTimeTicket()">
     <div class="form-group">
         <label>Unesite mail:</label>
@@ -9,3 +13,7 @@
      </div>
     <button type="submit" [disabled]="buyOneTimeTicketForm.invalid" class="btn btn-secondary">Kupi kartu</button>
  </form>
+ </td>
+ </tr>
+ </table>
+</div>

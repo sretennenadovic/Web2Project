@@ -246,7 +246,15 @@ namespace WebApp.Controllers
         [ResponseType(typeof(float))]
         public IHttpActionResult GetTicketPrice(int idCh, int idTt)
         {
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext()
+                                   .GetUserManager<ApplicationUserManager>()
+                                   .FindById(User.Identity.GetUserId());
+
             float price = db.CatalogHistories.Find(x => x.TicketTypeId == idTt && x.Id == idCh).FirstOrDefault().TicketPrice;
+            if (user.Approved)
+            {
+                price = price * db.PassengerTypes.Find(x => x.Id == user.PassengerTypeId).FirstOrDefault().Discount;
+            }
             return Ok(price);
         }
 

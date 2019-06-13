@@ -1,3 +1,6 @@
+<table>
+  <tr>
+    <td>
 <p>
     <!-- Kreiramo mapu -->
     <agm-map [latitude]="45.242268" [longitude]="19.842954" [zoom]="18">  
@@ -27,19 +30,21 @@
         
     </agm-map>
   </p>
-  
+</td>
+<td align="center">
   <table class="table table-condensed ">
       <tbody>
         <tr>
-          <td>Spisak linija:</td>
-          <td><select class="sirina" [(ngModel)]="selectedLine" (change)="changedLine()">
+          <td>Spisak linija:
+          <select class="sirina" [(ngModel)]="selectedLine" (change)="changedLine()">
               <option *ngFor="let sortedLine of sortedLines" [ngValue]="sortedLine">
                 {{sortedLine.Name}}
               </option>
           </select></td>
         </tr>
-      </tbody>
-  </table>
+<tr>
+  <td align="center">
+ 
 
   <form [formGroup]="changeLineForm" (ngSubmit)="changeLine()">
       <table>
@@ -76,8 +81,14 @@
       </td>
     </tr>
     </table>
-    <button type="submit" [disabled]="!changeLineForm.valid">Izmeni</button>
+    <button (click)="changeStations()" class="btn btn-secondary" [disabled]="selectedLine===undefined || selectedLine.Id===undefined">Izmeni stanice</button>
+    &nbsp;
+    <button type="submit" class="btn btn-secondary" [disabled]="!changeLineForm.valid">Izmeni</button>
     
   </form>
-  <button (click)="changeStations()" [disabled]="selectedLine===undefined || selectedLine.Id===undefined">Izmeni stanice</button>
-  
+  </td>
+  </tbody>
+  </table>
+  </td>
+  </tr>
+  </table>

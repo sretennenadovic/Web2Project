@@ -32,13 +32,26 @@
   </p>
   </td>
   <td>
+    <table>
+      <tr>
+        <td>
     Selektuj liniju za brisanje!
     <select class="sirina" [(ngModel)]="selectedLine" (change)="changedLine()">
         <option *ngFor="let sortedLine of sortedLines" [ngValue]="sortedLine">
           {{sortedLine.Name}}
         </option>
     </select>
-    <button [disabled]="selectedLine===undefined || selectedLine.Id===undefined" (click)="deleteLine()">Obrisi</button>
+    </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center">
+    <button [disabled]="selectedLine===undefined || selectedLine.Id===undefined" class="btn btn-secondary" (click)="deleteLine()">Obrisi</button>
+        </td>
+    </tr>
+</table>
   </td>
   </tr>
 </table>

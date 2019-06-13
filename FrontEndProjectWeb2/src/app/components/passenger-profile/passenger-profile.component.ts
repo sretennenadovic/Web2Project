@@ -30,7 +30,7 @@ export class PassengerProfileComponent implements OnInit {
     this.httpUserProfile.getSpecific().subscribe((userProfileInfo) => {
       this.userProfileInfo = userProfileInfo;
 
-      if (userProfileInfo.Approved == "True") {
+      if (userProfileInfo.Approved) {
         this.userProfileInfo.Approved = "Odobren";
       } 
       else {

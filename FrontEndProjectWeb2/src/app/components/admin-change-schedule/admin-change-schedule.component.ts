@@ -79,7 +79,7 @@ export class AdminChangeScheduleComponent implements OnInit {
       this.updatedSchedule.ScheduleTypeId = this.selectedScheduleType.Id;
       this.updatedSchedule.Departure = this.inputSchedule
       this.putScheduleHttp.put(this.updatedSchedule,this.selectedScheduleId).subscribe(data => {
-        console.log("Kao je usao!")
+        alert("Uspesno ste izmenili red voznje!")
       })
     }
   }

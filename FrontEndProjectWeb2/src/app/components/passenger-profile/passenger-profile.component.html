@@ -1,5 +1,5 @@
-<div class="main">
-  <div class="col-md-8 col-sm-10">
+<div class="main" id="mydiv">
+  <div class="col-md-12 col-sm-10">
     <div class="profile-form">
       <form [formGroup]="profileForm" (ngSubmit)="change()">
         <div class="form-group row">
@@ -106,7 +106,7 @@
             </div>
           </div>
         </div>
-        <button type="submit" [disabled]="!registerForm.valid" class="btn btn-black">
+        <button type="submit" [disabled]="!registerForm.valid" class="btn btn-secondary">
           Izmeni
         </button>
       </form>
